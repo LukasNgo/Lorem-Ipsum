@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerEvents: {fileID: 682340718}
   pointerRenderer: {fileID: 682340719}
-  SelectedObject: {fileID: 1792840418926634, guid: 1a36cb711a0d86e47ac0cfb7d7103b32,
+  SelectedObject: {fileID: 1646095386235962, guid: 193afc74eb2fb094480ee687879fc9ca,
     type: 2}
 --- !u!1001 &704108532
 Prefab:
