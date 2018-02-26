@@ -12,6 +12,8 @@ public class PlaceObjects : MonoBehaviour {
     private GameObject ShowVerison;
     private Vector3 placeLocation;
 
+    private bool menu = true;
+
     private void Start()
     {
         ShowVerison = Instantiate(SelectedObject, transform);
@@ -36,7 +38,7 @@ public class PlaceObjects : MonoBehaviour {
 
     private void controllerEvents_TriggerReleased(object sender, ControllerInteractionEventArgs e)
     {
-        if ((SelectedObject != null) && (pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true))
+        if ((SelectedObject != null) && (pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
         {
             PlaceObject();
         }
@@ -53,7 +55,7 @@ public class PlaceObjects : MonoBehaviour {
     {
         placeLocation = pointerRenderer.GetDestinationHit().point;
 
-        if ((pointerRenderer.IsVisible() == true) && (SelectedObject != null) && (pointerRenderer.IsValidCollision() == true))
+        if ((pointerRenderer.IsVisible() == true) && (SelectedObject != null) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
         {
             ShowVerison.SetActive(true);
             ShowVerison.transform.position = placeLocation;
@@ -80,5 +82,10 @@ public class PlaceObjects : MonoBehaviour {
                 ShowVerison.GetComponentsInChildren<Collider>()[i].enabled = false;
             }
         }
+    }
+
+    public void MenuUp(bool menuIsUp)
+    {
+        menu = menuIsUp;
     }
 }

@@ -8,7 +8,11 @@ public class MenuToggle : MonoBehaviour {
     public VRTK_ControllerEvents controllerEvents;
     public GameObject menu;
 
+    public bool RightBuildController = false;
+    public bool PlayerMode = false;
+
     private bool menuState = false;
+    
 
     private void OnEnable()
     {
@@ -29,6 +33,19 @@ public class MenuToggle : MonoBehaviour {
     {
         menuState = !menuState;
         menu.SetActive(menuState);
-        GetComponent<VRTK_Pointer>().enableTeleport = !menuState;
+
+        if (PlayerMode == true)
+        {
+            GetComponent<VRTK_Pointer>().enableTeleport = !menuState;
+        }
+        else if (RightBuildController == true)
+        {
+            GetComponent<PlaceObjects>().MenuUp(menuState);
+        }
+    }
+
+    public void ChangePlayerMode(bool updateMode)
+    {
+        PlayerMode = updateMode;
     }
 }
