@@ -10,7 +10,7 @@ public class GetObjectList : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        objectListScript = GameObject.Find("Objects").GetComponent<ObjectList>();
+        objectListScript = GameObject.Find("insertObjects").GetComponent<ObjectList>();
 
         objectListArray = objectListScript.getObjectArray();
 
