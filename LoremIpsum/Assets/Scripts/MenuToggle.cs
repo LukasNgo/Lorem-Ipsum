@@ -5,23 +5,27 @@ using VRTK;
 
 public class MenuToggle : MonoBehaviour {
 
-    public VRTK_ControllerEvents controllerEvents;
+    public VRTK_ControllerEvents R_controllerEvents;
+    public VRTK_ControllerEvents L_controllerEvents;
     public GameObject menu;
 
-    public bool RightBuildController = false;
     public bool PlayerMode = false;
+    public bool BuildMode = false;
+    //public bool LinkMode = false;
 
     private bool menuState = false;
     
 
     private void OnEnable()
     {
-        controllerEvents.ButtonTwoPressed += controllerEvents_ButtonTwoPressed;
+        L_controllerEvents.ButtonTwoPressed += controllerEvents_ButtonTwoPressed;
+        R_controllerEvents.ButtonTwoPressed += controllerEvents_ButtonTwoPressed;
     }
 
     private void OnDisable()
     {
-        controllerEvents.ButtonTwoPressed -= controllerEvents_ButtonTwoPressed;
+        L_controllerEvents.ButtonTwoPressed -= controllerEvents_ButtonTwoPressed;
+        R_controllerEvents.ButtonTwoPressed -= controllerEvents_ButtonTwoPressed;
     }
 
     private void controllerEvents_ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
@@ -38,14 +42,24 @@ public class MenuToggle : MonoBehaviour {
         {
             GetComponent<VRTK_Pointer>().enableTeleport = !menuState;
         }
-        else if (RightBuildController == true)
+        else if (BuildMode == true)
         {
-            GetComponent<PlaceObjects>().MenuUp(menuState);
+            R_controllerEvents.gameObject.GetComponent<PlaceObjects>().MenuUp(menuState);
         }
+        else
+        {
+            //Link Mode stuff
+        }
+
     }
 
     public void ChangePlayerMode(bool updateMode)
     {
         PlayerMode = updateMode;
+    }
+
+    public void ChangeBuildMode(bool updateMode)
+    {
+        BuildMode = updateMode;
     }
 }
