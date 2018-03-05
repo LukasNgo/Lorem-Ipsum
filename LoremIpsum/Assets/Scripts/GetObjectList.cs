@@ -6,15 +6,15 @@ public class GetObjectList : MonoBehaviour {
 
     private ObjectList objectListScript;
 
-    private GameObject[] objectListArray;
+    private GameObject[] m_objectListArray;
 
 	// Use this for initialization
 	void Start () {
         objectListScript = GameObject.Find("insertObjects").GetComponent<ObjectList>();
 
-        objectListArray = objectListScript.getObjectArray();
+        m_objectListArray = objectListScript.getObjectArray();
 
-        foreach (GameObject i in objectListArray)
+        foreach (GameObject i in m_objectListArray)
         {
             Debug.Log(i);
         }

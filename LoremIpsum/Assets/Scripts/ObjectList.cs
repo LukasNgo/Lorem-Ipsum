@@ -5,11 +5,11 @@ using UnityEngine;
 public class ObjectList : MonoBehaviour {
 
     [SerializeField]
-    private GameObject[] objectArray = new GameObject[5];
+    private GameObject[] m_objectArray = new GameObject[5];
 
     public GameObject[] getObjectArray()
     {
-        return objectArray;
+        return m_objectArray;
     }
 
 }

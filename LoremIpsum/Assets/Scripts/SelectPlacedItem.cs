@@ -8,6 +8,7 @@ public class SelectPlacedItem : MonoBehaviour {
     public VRTK_ControllerEvents controllerEvents;
     public VRTK_BasePointerRenderer pointerRenderer;
 
+    private PlaceObjects m_placeObject_script;
     private GameObject m_selected;
 
     private void OnEnable()
@@ -20,24 +21,30 @@ public class SelectPlacedItem : MonoBehaviour {
         controllerEvents.TriggerReleased -= controllerEvents_TriggerReleased;
     }
 
-    private void controllerEvents_TriggerReleased(object sender, ControllerInteractionEventArgs e)
+    private void Start()
     {
-        SelectObject();
-
+        m_placeObject_script = GameObject.Find("B_RightController").GetComponent<PlaceObjects>();
     }
 
-    public void SelectObject()
+    private void controllerEvents_TriggerReleased(object sender, ControllerInteractionEventArgs e)
     {
-        if (pointerRenderer.IsVisible() && pointerRenderer.IsValidCollision() && pointerRenderer.GetDestinationHit().collider.CompareTag("SelectableObjects"))
+        m_selected = SelectObject();
+        if (m_selected != null)
         {
-            m_selected = pointerRenderer.GetDestinationHit().collider.gameObject;           
+            m_placeObject_script.ChangeSelectedObject(m_selected);
         }
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
+    private GameObject SelectObject()
+    {
+        if (pointerRenderer.IsVisible() && pointerRenderer.IsValidCollision() && pointerRenderer.GetDestinationHit().collider.CompareTag("SelectableObjects"))
+        {
+            GameObject selected = pointerRenderer.GetDestinationHit().collider.gameObject;
+            Destroy(selected);
+            return selected;
+        }
+        return null;
+    }
 	
 	// Update is called once per frame
 	void Update () {
