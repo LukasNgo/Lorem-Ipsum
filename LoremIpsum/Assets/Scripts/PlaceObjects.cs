@@ -8,22 +8,35 @@ public class PlaceObjects : MonoBehaviour {
     public VRTK_ControllerEvents controllerEvents;
     public VRTK_BasePointerRenderer pointerRenderer;
 
+    public string objectTag = "Object";
+
     public GameObject SelectedObject = null;//Change to private later
     private GameObject ShowVerison;
     private Vector3 placeLocation;
 
     private bool menu = true;
 
+    public bool canPlace = true;
+
     private void Start()
     {
         ShowVerison = Instantiate(SelectedObject, transform);
 
-        ShowVerison.GetComponent<Collider>().enabled = false;
+        DisableColliders();
+        //comment out later as it should start out null
+    }
+
+    private void DisableColliders()
+    {
         for (int i = 0; i < ShowVerison.GetComponentsInChildren<Collider>().Length; i++)
         {
-            ShowVerison.GetComponentsInChildren<Collider>()[i].enabled = false;
+            ShowVerison.GetComponentsInChildren<Collider>()[i].isTrigger = true;
+
+            ShowVerison.GetComponentsInChildren<Collider>()[i].gameObject.AddComponent<ObjectInObjectDetection>();
+            ShowVerison.GetComponentsInChildren<ObjectInObjectDetection>()[i].placeObject = this;
+
+            ShowVerison.GetComponentsInChildren<Collider>()[i].gameObject.layer = 2;
         }
-        //comment out later as it should start out null
     }
 
     private void OnEnable()
@@ -38,7 +51,7 @@ public class PlaceObjects : MonoBehaviour {
 
     private void controllerEvents_TriggerReleased(object sender, ControllerInteractionEventArgs e)
     {
-        if ((SelectedObject != null) && (pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
+        if ((SelectedObject != null) && (pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true) && (menu == false) && (canPlace == true))
         {
             PlaceObject();
         }
@@ -59,7 +72,15 @@ public class PlaceObjects : MonoBehaviour {
         {
             ShowVerison.SetActive(true);
             ShowVerison.transform.position = placeLocation;
-            ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.validCollisionColor;
+
+            if (canPlace == true)
+            {
+                ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.validCollisionColor;
+            }
+            else
+            {
+                ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.invalidCollisionColor;
+            }
         }
         else
         {
@@ -75,12 +96,7 @@ public class PlaceObjects : MonoBehaviour {
         if (SelectedObject != null)
         {
             ShowVerison = Instantiate(SelectedObject, placeLocation, Quaternion.identity);
-            ShowVerison.GetComponent<Collider>().enabled = false;
-
-            for (int i = 0; i < ShowVerison.GetComponentsInChildren<Collider>().Length; i++)
-            {
-                ShowVerison.GetComponentsInChildren<Collider>()[i].enabled = false;
-            }
+            DisableColliders();
         }
     }
 
