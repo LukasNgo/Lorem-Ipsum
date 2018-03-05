@@ -7,6 +7,7 @@ public class ControllerManager : MonoBehaviour {
 
     public string controllerMode = "Player";
     public bool right = false;
+    public MenuToggle inGameMenu;
 
     public MonoBehaviour[] playerScripts;
     public MonoBehaviour[] buildScripts;
@@ -29,8 +30,8 @@ public class ControllerManager : MonoBehaviour {
                 changeScripts(linkScripts, false);
                 changeScripts(playerScripts, true);
 
-                GetComponent<MenuToggle>().PlayerMode = true;
-                GetComponent<MenuToggle>().BuildMode = false;
+                inGameMenu.PlayerMode = true;
+                inGameMenu.BuildMode = false;
 
                 GetComponent<VRTK_Pointer>().enableTeleport = true;
 
@@ -41,8 +42,8 @@ public class ControllerManager : MonoBehaviour {
                 changeScripts(linkScripts, false);
                 changeScripts(buildScripts, true);
 
-                GetComponent<MenuToggle>().PlayerMode = false;
-                GetComponent<MenuToggle>().BuildMode = true;
+                inGameMenu.PlayerMode = false;
+                inGameMenu.BuildMode = true;
 
                 GetComponent<VRTK_Pointer>().enableTeleport = false;
                 break;
@@ -52,8 +53,8 @@ public class ControllerManager : MonoBehaviour {
                 changeScripts(playerScripts, false);
                 changeScripts(linkScripts, true);
 
-                GetComponent<MenuToggle>().PlayerMode = false;
-                GetComponent<MenuToggle>().BuildMode = false;
+                inGameMenu.PlayerMode = false;
+                inGameMenu.BuildMode = false;
 
                 GetComponent<VRTK_Pointer>().enableTeleport = false;
                 break;
