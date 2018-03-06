@@ -14,13 +14,16 @@ public class PlaceObjects : MonoBehaviour {
 
     private void Start()
     {
-        ShowVerison = Instantiate(SelectedObject, transform);
+        
+        /*
+         * ShowVerison = Instantiate(SelectedObject, transform);
 
         ShowVerison.GetComponent<Collider>().enabled = false;
         for (int i = 0; i < ShowVerison.GetComponentsInChildren<Collider>().Length; i++)
         {
             ShowVerison.GetComponentsInChildren<Collider>()[i].enabled = false;
         }
+        */
         //comment out later as it should start out null
     }
 
@@ -46,22 +49,26 @@ public class PlaceObjects : MonoBehaviour {
 
     private void PlaceObject()
     {
-        Instantiate(SelectedObject, placeLocation, Quaternion.identity);//Replace Instantiate with an object pool
+        GameObject newItem = Instantiate(SelectedObject, placeLocation, Quaternion.identity);//Replace Instantiate with an object pool
+        newItem.SetActive(true);
     }
 
     private void Update()
     {
-        placeLocation = pointerRenderer.GetDestinationHit().point;
+        if (SelectedObject != null)
+        {
+            placeLocation = pointerRenderer.GetDestinationHit().point;
 
-        if ((pointerRenderer.IsVisible() == true) && (SelectedObject != null) && (pointerRenderer.IsValidCollision() == true))
-        {
-            ShowVerison.SetActive(true);
-            ShowVerison.transform.position = placeLocation;
-            ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.validCollisionColor;
-        }
-        else
-        {
-            ShowVerison.SetActive(false);
+            if ((pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true))
+            {
+                ShowVerison.SetActive(true);
+                ShowVerison.transform.position = placeLocation;
+                ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.validCollisionColor;
+            }
+            else
+            {
+                ShowVerison.SetActive(false);
+            }
         }
     }
 
