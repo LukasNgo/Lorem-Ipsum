@@ -10,7 +10,6 @@ public class SelectPlacedItem : MonoBehaviour {
 
     private PlaceObjects m_placeObject_script;
     private GameObject m_selected;
-    private GameObject m_afterSelected;
 
     private void OnEnable()
     { 
@@ -29,24 +28,25 @@ public class SelectPlacedItem : MonoBehaviour {
 
     private void controllerEvents_TriggerReleased(object sender, ControllerInteractionEventArgs e)
     {
-        SelectObject();
-        if (m_afterSelected != null)
-        {
-            m_placeObject_script.ChangeSelectedObject(m_afterSelected);
+        m_selected = SelectObject();
 
-            Destroy(m_selected);
+        if (m_selected != null)
+        {
+            m_placeObject_script.ChangeSelectedObject(m_selected);
+            m_selected.SetActive(false);
         }
     }
 
-    public void SelectObject()
+    private GameObject SelectObject()
     {
+        GameObject afterSelected = null;
 
         if (pointerRenderer.IsVisible() && pointerRenderer.IsValidCollision() && pointerRenderer.GetDestinationHit().collider.CompareTag("SelectableObjects"))
         {
-            m_afterSelected = pointerRenderer.GetDestinationHit().collider.gameObject;
-            
+            afterSelected = pointerRenderer.GetDestinationHit().collider.gameObject;
         }
-        
+
+        return afterSelected;       
     }
 
 
@@ -67,4 +67,5 @@ public class SelectPlacedItem : MonoBehaviour {
         
     }
     */
+    
 }
