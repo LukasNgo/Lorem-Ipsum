@@ -231,7 +231,7 @@ Transform:
   - {fileID: 320227026}
   - {fileID: 1819908402}
   m_Father: {fileID: 603318693}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &56973546
 MonoBehaviour:
@@ -558,6 +558,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &168623031 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1384746914293964, guid: be540b97364be0a4890e39e62ac89ed1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1718144403}
 --- !u!1 &172702079
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,6 +641,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1985585705}
         m_MethodName: ChangeToBuildMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 807225128}
+        m_MethodName: ChangeState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1034,6 +1050,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sdkObject: 1
+--- !u!1 &440877739 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1883185261795400, guid: be540b97364be0a4890e39e62ac89ed1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1718144403}
 --- !u!1 &482529140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,8 +1559,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 56973545}
   - {fileID: 867304822}
+  - {fileID: 56973545}
   m_Father: {fileID: 1985585704}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1562,8 +1583,8 @@ MonoBehaviour:
   autoManageVRSettings: 1
   autoLoadSetup: 1
   setups:
-  - {fileID: 56973546}
   - {fileID: 867304823}
+  - {fileID: 56973546}
 --- !u!1001 &625247968
 Prefab:
   m_ObjectHideFlags: 0
@@ -1695,6 +1716,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 632513971}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &712946247 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1538727058887424, guid: be540b97364be0a4890e39e62ac89ed1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1718144403}
+--- !u!1 &738222186 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1587602180963074, guid: be540b97364be0a4890e39e62ac89ed1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1718144403}
 --- !u!1 &756023398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,6 +1863,11 @@ MonoBehaviour:
   menu: {fileID: 504852984}
   PlayerMode: 0
   BuildMode: 0
+--- !u!1 &809945037 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1391022766006510, guid: be540b97364be0a4890e39e62ac89ed1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1718144403}
 --- !u!1 &814077627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,7 +1986,7 @@ Transform:
   - {fileID: 1010926808}
   - {fileID: 1718144404}
   m_Father: {fileID: 603318693}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &867304823
 MonoBehaviour:
@@ -1964,12 +2000,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPopulateObjectReferences: 1
-  actualBoundaries: {fileID: 0}
-  actualHeadset: {fileID: 0}
-  actualLeftController: {fileID: 0}
-  actualRightController: {fileID: 0}
-  modelAliasLeftController: {fileID: 0}
-  modelAliasRightController: {fileID: 0}
+  actualBoundaries: {fileID: 2125398398}
+  actualHeadset: {fileID: 738222186}
+  actualLeftController: {fileID: 712946247}
+  actualRightController: {fileID: 809945037}
+  modelAliasLeftController: {fileID: 168623031}
+  modelAliasRightController: {fileID: 440877739}
   cachedSystemSDKInfo:
     baseTypeName: VRTK.SDK_BaseSystem
     fallbackTypeName: VRTK.SDK_FallbackSystem
@@ -2703,6 +2739,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1985585705}
         m_MethodName: ChangeToPlayerMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 807225128}
+        m_MethodName: ChangeState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3755,3 +3802,8 @@ MonoBehaviour:
   LinkMode: {fileID: 1985585703}
   RC: {fileID: 1495150195}
   LC: {fileID: 482529149}
+--- !u!1 &2125398398 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013941130086, guid: be540b97364be0a4890e39e62ac89ed1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1718144403}
