@@ -16,7 +16,7 @@ public class GetObjectList : MonoBehaviour {
 
         foreach (GameObject i in m_objectListArray)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
         }
 	}
 	
