@@ -34,6 +34,7 @@ public class ControllerManager : MonoBehaviour {
                 inGameMenu.BuildMode = false;
 
                 GetComponent<VRTK_Pointer>().enableTeleport = true;
+                GetComponent<VRTK_InteractGrab>().enabled = true;
 
                 break;
 
@@ -46,6 +47,7 @@ public class ControllerManager : MonoBehaviour {
                 inGameMenu.BuildMode = true;
 
                 GetComponent<VRTK_Pointer>().enableTeleport = false;
+                GetComponent<VRTK_InteractGrab>().enabled = false;
                 break;
 
             case "Link":
@@ -57,6 +59,7 @@ public class ControllerManager : MonoBehaviour {
                 inGameMenu.BuildMode = false;
 
                 GetComponent<VRTK_Pointer>().enableTeleport = false;
+                GetComponent<VRTK_InteractGrab>().enabled = false;
                 break;
         }
     }

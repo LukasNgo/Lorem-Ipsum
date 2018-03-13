@@ -3014,6 +3014,7 @@ GameObject:
   - component: {fileID: 1495150192}
   - component: {fileID: 1495150195}
   - component: {fileID: 1495150194}
+  - component: {fileID: 1495150193}
   m_Layer: 0
   m_Name: P_RightController
   m_TagString: Untagged
@@ -3198,6 +3199,18 @@ MonoBehaviour:
   canClickOnHover: 0
   autoActivatingCanvas: {fileID: 0}
   collisionClick: 0
+--- !u!114 &1495150193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1495150185}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20432ceb330ea4841a88c05fff797562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerEvents: {fileID: 1495150187}
 --- !u!114 &1495150194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3232,6 +3245,7 @@ MonoBehaviour:
   playerScripts: []
   buildScripts:
   - {fileID: 1495150194}
+  - {fileID: 1495150193}
   linkScripts: []
 --- !u!1 &1499803528
 GameObject:
