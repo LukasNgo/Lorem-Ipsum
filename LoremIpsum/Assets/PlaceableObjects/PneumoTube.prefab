@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 65929660847151006}
   - component: {fileID: 136887795858969270}
   - component: {fileID: 65911789649119292}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PneumoTube
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114126203976460160}
   - component: {fileID: 59885661180149118}
   - component: {fileID: 65608091589514264}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PneumoDoor
   m_TagString: Object
   m_Icon: {fileID: 0}

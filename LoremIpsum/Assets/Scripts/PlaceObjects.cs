@@ -14,6 +14,8 @@ public class PlaceObjects : MonoBehaviour {
     private GameObject ShowVerison;
     private Vector3 placeLocation;
 
+    public Vector2 rotation;
+
     private bool menu = true;
 
     public bool canPlace = true;
@@ -61,16 +63,18 @@ public class PlaceObjects : MonoBehaviour {
 
     private void PlaceObject()
     {
-        Instantiate(SelectedObject, placeLocation, Quaternion.identity);//Replace Instantiate with an object pool
+        Quaternion placeRotation = Quaternion.Euler(rotation.x, rotation.y, 0);
+        Instantiate(SelectedObject, placeLocation, placeRotation);//Replace Instantiate with an object pool
     }
 
     private void Update()
     {
+
         placeLocation = pointerRenderer.GetDestinationHit().point;
 
         if ((pointerRenderer.IsVisible() == true) && (SelectedObject != null) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
         {
-            ShowVerison.SetActive(true);
+ShowVerison.SetActive(true);
             ShowVerison.transform.position = placeLocation;
 
             if (canPlace == true)
@@ -95,7 +99,9 @@ public class PlaceObjects : MonoBehaviour {
 
         if (SelectedObject != null)
         {
-            ShowVerison = Instantiate(SelectedObject, placeLocation, Quaternion.identity);
+            Quaternion placeRotation = Quaternion.Euler(rotation.x, rotation.y, 0);
+
+            ShowVerison = Instantiate(SelectedObject, placeLocation, placeRotation);
             DisableColliders();
         }
     }
