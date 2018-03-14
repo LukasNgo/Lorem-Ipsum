@@ -20,7 +20,9 @@ public class PlaceObjects : MonoBehaviour {
 
     private void Start()
     {
-        ShowVerison = Instantiate(SelectedObject, transform);
+        
+        /*
+         * ShowVerison = Instantiate(SelectedObject, transform);
 
         DisableColliders();
         //comment out later as it should start out null
@@ -37,6 +39,11 @@ public class PlaceObjects : MonoBehaviour {
 
             ShowVerison.GetComponentsInChildren<Collider>()[i].gameObject.layer = 2;
         }
+<<<<<<< HEAD
+=======
+        */
+        //comment out later as it should start out null
+>>>>>>> objects-menu
     }
 
     private void OnEnable()
@@ -67,11 +74,10 @@ public class PlaceObjects : MonoBehaviour {
 
     private void Update()
     {
-	if (SelectedObject != null)
-	{
+<<<<<<< HEAD
         placeLocation = pointerRenderer.GetDestinationHit().point;
 
-        if ((pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
+        if ((pointerRenderer.IsVisible() == true) && (SelectedObject != null) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
         {
             ShowVerison.SetActive(true);
             ShowVerison.transform.position = placeLocation;
@@ -86,10 +92,23 @@ public class PlaceObjects : MonoBehaviour {
             }
         }
         else
+=======
+        if (SelectedObject != null)
+>>>>>>> objects-menu
         {
-            ShowVerison.SetActive(false);
+            placeLocation = pointerRenderer.GetDestinationHit().point;
+
+            if ((pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true))
+            {
+                ShowVerison.SetActive(true);
+                ShowVerison.transform.position = placeLocation;
+                ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.validCollisionColor;
+            }
+            else
+            {
+                ShowVerison.SetActive(false);
+            }
         }
-	}
     }
 
     //Used to changed the gameobject selected

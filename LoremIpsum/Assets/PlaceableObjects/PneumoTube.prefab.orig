@@ -32,7 +32,11 @@ GameObject:
   - component: {fileID: 65911789649119292}
   m_Layer: 0
   m_Name: PneumoTube
+<<<<<<< HEAD
+  m_TagString: Object
+=======
   m_TagString: SelectableObjects
+>>>>>>> objects-menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -48,7 +48,11 @@ GameObject:
   - component: {fileID: 114280341228938122}
   m_Layer: 10
   m_Name: HandheldMirror
+<<<<<<< HEAD
+  m_TagString: Object
+=======
   m_TagString: SelectableObjects
+>>>>>>> objects-menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -27,7 +27,11 @@ GameObject:
   - component: {fileID: 54148126572312824}
   m_Layer: 0
   m_Name: LaserEmitter
+<<<<<<< HEAD
+  m_TagString: Object
+=======
   m_TagString: SelectableObjects
+>>>>>>> objects-menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
