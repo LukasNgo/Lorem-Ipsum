@@ -3943,7 +3943,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 482529150}
     - target: {fileID: 114604886239201584, guid: 6c276635358522447ad698658d86c275,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -3952,6 +3952,11 @@ Prefab:
     - target: {fileID: 1866319619941698, guid: 6c276635358522447ad698658d86c275, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114402134898184770, guid: 6c276635358522447ad698658d86c275,
+        type: 2}
+      propertyPath: m_DynamicPixelsPerUnit
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c276635358522447ad698658d86c275, type: 2}

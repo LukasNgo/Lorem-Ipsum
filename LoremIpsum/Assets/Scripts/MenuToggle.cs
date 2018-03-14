@@ -18,19 +18,27 @@ public class MenuToggle : MonoBehaviour {
 
     private void OnEnable()
     {
-        L_controllerEvents.ButtonTwoPressed += controllerEvents_ButtonTwoPressed;
-        R_controllerEvents.ButtonTwoPressed += controllerEvents_ButtonTwoPressed;
+        L_controllerEvents.ButtonTwoPressed += L_controllerEvents_ButtonTwoPressed;
+        R_controllerEvents.ButtonTwoPressed += R_controllerEvents_ButtonTwoPressed;
     }
 
     private void OnDisable()
     {
-        L_controllerEvents.ButtonTwoPressed -= controllerEvents_ButtonTwoPressed;
-        R_controllerEvents.ButtonTwoPressed -= controllerEvents_ButtonTwoPressed;
+        L_controllerEvents.ButtonTwoPressed -= L_controllerEvents_ButtonTwoPressed;
+        R_controllerEvents.ButtonTwoPressed -= R_controllerEvents_ButtonTwoPressed;
     }
 
-    private void controllerEvents_ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
+    private void R_controllerEvents_ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
     {
         ChangeState();
+    }
+
+    private void L_controllerEvents_ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
+    {
+        if (BuildMode != true)
+        {
+            ChangeState();
+        }
     }
 
     public void ChangeState()

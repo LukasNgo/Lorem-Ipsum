@@ -24,22 +24,17 @@ public class ObjectsMenuToggle : MonoBehaviour {
 
     private void OnEnable()
     {
-        controllerEvents.TouchpadPressed += controllerEvents_TouchpadPressed;
+        controllerEvents.ButtonTwoPressed += controllerEvents_ButtonTwoPressed;
     }
 
     private void OnDisable()
     {
-        controllerEvents.TouchpadPressed -= controllerEvents_TouchpadPressed;
+        controllerEvents.ButtonTwoPressed -= controllerEvents_ButtonTwoPressed;
     }
 
-    private void controllerEvents_TouchpadPressed(object sender, ControllerInteractionEventArgs e)
+    private void controllerEvents_ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
     {
-        //if (!m_menuState)
-        if (!menu.activeInHierarchy)
-        {
-            menu.SetActive(true);
-            //m_menuState = !m_menuState;
-        }
+        ChangeState();
     }
 
     public void ChangeState()
