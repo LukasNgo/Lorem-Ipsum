@@ -23,7 +23,7 @@ public class SelectPlacedItem : MonoBehaviour {
 
     private void Start()
     {
-        m_placeObject_script = GameObject.Find("B_RightController").GetComponent<PlaceObjects>();
+        m_placeObject_script = GameObject.Find("P_RightController").GetComponent<PlaceObjects>();
     }
 
     private void controllerEvents_TriggerReleased(object sender, ControllerInteractionEventArgs e)

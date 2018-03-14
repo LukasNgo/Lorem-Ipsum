@@ -14,7 +14,7 @@ public class ObjectsMenuButtonControl : MonoBehaviour {
 
     private void Start()
     {
-        m_placeObjects_script = GameObject.Find("B_RightController").GetComponent<PlaceObjects>();
+        m_placeObjects_script = GameObject.Find("P_RightController").GetComponent<PlaceObjects>();
 
         m_objectListScript = GameObject.Find("insertObjects").GetComponent<ObjectList>();
     
