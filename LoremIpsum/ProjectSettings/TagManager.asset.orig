@@ -5,10 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
 <<<<<<< HEAD
-  - Object
-=======
   - SelectableObjects
->>>>>>> objects-menu
+=======
+  - Object
+  - ShowItem
+>>>>>>> Rotate-Object
   layers:
   - Default
   - TransparentFX

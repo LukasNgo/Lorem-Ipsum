@@ -8,11 +8,13 @@ public class PlaceObjects : MonoBehaviour {
     public VRTK_ControllerEvents controllerEvents;
     public VRTK_BasePointerRenderer pointerRenderer;
 
-    public string objectTag = "Object";
+    public string objectTag = "SelectableObjects";
 
     public GameObject SelectedObject = null;//Change to private later
     private GameObject ShowVerison;
     private Vector3 placeLocation;
+
+    public Quaternion placeRotation;
 
     private bool menu = true;
 
@@ -20,9 +22,7 @@ public class PlaceObjects : MonoBehaviour {
 
     private void Start()
     {
-        
-        /*
-         * ShowVerison = Instantiate(SelectedObject, transform);
+        ShowVerison = Instantiate(SelectedObject, transform);
 
         DisableColliders();
         //comment out later as it should start out null
@@ -39,11 +39,17 @@ public class PlaceObjects : MonoBehaviour {
 
             ShowVerison.GetComponentsInChildren<Collider>()[i].gameObject.layer = 2;
         }
-<<<<<<< HEAD
-=======
-        */
-        //comment out later as it should start out null
->>>>>>> objects-menu
+
+        for (int i = 0; i < ShowVerison.GetComponentsInChildren<MeshCollider>().Length; i++)
+        {
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].convex = true;
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].isTrigger = true;
+
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].gameObject.AddComponent<ObjectInObjectDetection>();
+            ShowVerison.GetComponentsInChildren<ObjectInObjectDetection>()[i].placeObject = this;
+
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].gameObject.layer = 2;
+        }
     }
 
     private void OnEnable()
@@ -68,19 +74,29 @@ public class PlaceObjects : MonoBehaviour {
 
     private void PlaceObject()
     {
+<<<<<<< HEAD
         GameObject newItem = Instantiate(SelectedObject, placeLocation, Quaternion.identity);//Replace Instantiate with an object pool
         newItem.SetActive(true);
+=======
+        Instantiate(SelectedObject, placeLocation, placeRotation);//Replace Instantiate with an object pool
+>>>>>>> Rotate-Object
     }
 
     private void Update()
     {
 <<<<<<< HEAD
+	if (SelectedObject != null)
+	{
+=======
+
+>>>>>>> Rotate-Object
         placeLocation = pointerRenderer.GetDestinationHit().point;
 
-        if ((pointerRenderer.IsVisible() == true) && (SelectedObject != null) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
+        if ((pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
         {
             ShowVerison.SetActive(true);
             ShowVerison.transform.position = placeLocation;
+            ShowVerison.transform.rotation = placeRotation;
 
             if (canPlace == true)
             {
@@ -92,23 +108,10 @@ public class PlaceObjects : MonoBehaviour {
             }
         }
         else
-=======
-        if (SelectedObject != null)
->>>>>>> objects-menu
         {
-            placeLocation = pointerRenderer.GetDestinationHit().point;
-
-            if ((pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true))
-            {
-                ShowVerison.SetActive(true);
-                ShowVerison.transform.position = placeLocation;
-                ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.validCollisionColor;
-            }
-            else
-            {
-                ShowVerison.SetActive(false);
-            }
+            ShowVerison.SetActive(false);
         }
+	}
     }
 
     //Used to changed the gameobject selected
@@ -118,7 +121,7 @@ public class PlaceObjects : MonoBehaviour {
 
         if (SelectedObject != null)
         {
-            ShowVerison = Instantiate(SelectedObject, placeLocation, Quaternion.identity);
+            ShowVerison = Instantiate(SelectedObject, placeLocation, placeRotation);
             DisableColliders();
         }
     }
