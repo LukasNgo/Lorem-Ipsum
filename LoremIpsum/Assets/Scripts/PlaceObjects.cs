@@ -22,7 +22,7 @@ public class PlaceObjects : MonoBehaviour {
 
     private void Start()
     {
-        ShowVerison = Instantiate(SelectedObject, transform);
+        ShowVerison = Instantiate(SelectedObject, placeLocation, placeRotation);
 
         DisableColliders();
         //comment out later as it should start out null
