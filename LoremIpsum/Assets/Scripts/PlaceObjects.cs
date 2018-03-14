@@ -14,6 +14,8 @@ public class PlaceObjects : MonoBehaviour {
     private GameObject ShowVerison;
     private Vector3 placeLocation;
 
+    public Quaternion placeRotation;
+
     private bool menu = true;
 
     public bool canPlace = true;
@@ -36,6 +38,17 @@ public class PlaceObjects : MonoBehaviour {
             ShowVerison.GetComponentsInChildren<ObjectInObjectDetection>()[i].placeObject = this;
 
             ShowVerison.GetComponentsInChildren<Collider>()[i].gameObject.layer = 2;
+        }
+
+        for (int i = 0; i < ShowVerison.GetComponentsInChildren<MeshCollider>().Length; i++)
+        {
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].convex = true;
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].isTrigger = true;
+
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].gameObject.AddComponent<ObjectInObjectDetection>();
+            ShowVerison.GetComponentsInChildren<ObjectInObjectDetection>()[i].placeObject = this;
+
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].gameObject.layer = 2;
         }
     }
 
@@ -61,7 +74,7 @@ public class PlaceObjects : MonoBehaviour {
 
     private void PlaceObject()
     {
-        GameObject newItem = Instantiate(SelectedObject, placeLocation, Quaternion.identity);//Replace Instantiate with an object pool
+        GameObject newItem = Instantiate(SelectedObject, placeLocation, placeRotation);//Replace Instantiate with an object pool
         newItem.SetActive(true);
     }
 
@@ -75,6 +88,7 @@ public class PlaceObjects : MonoBehaviour {
         {
             ShowVerison.SetActive(true);
             ShowVerison.transform.position = placeLocation;
+            ShowVerison.transform.rotation = placeRotation;
 
             if (canPlace == true)
             {
@@ -99,7 +113,7 @@ public class PlaceObjects : MonoBehaviour {
 
         if (SelectedObject != null)
         {
-            ShowVerison = Instantiate(SelectedObject, placeLocation, Quaternion.identity);
+            ShowVerison = Instantiate(SelectedObject, placeLocation, placeRotation);
             DisableColliders();
         }
     }
