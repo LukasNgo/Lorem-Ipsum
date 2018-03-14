@@ -3290,7 +3290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerEvents: {fileID: 1495150187}
-  changeSpeed: 200
+  changeSpeed: 90
 --- !u!114 &1495150194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3307,7 +3307,7 @@ MonoBehaviour:
   objectTag: Object
   SelectedObject: {fileID: 1646095386235962, guid: 193afc74eb2fb094480ee687879fc9ca,
     type: 2}
-  rotation: {x: 0, y: 0}
+  placeRotation: {x: 0, y: 0, z: 0, w: 0}
   canPlace: 1
 --- !u!114 &1495150195
 MonoBehaviour:

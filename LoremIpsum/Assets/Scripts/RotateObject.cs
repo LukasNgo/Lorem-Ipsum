@@ -10,7 +10,9 @@ public class RotateObject : MonoBehaviour {
 
     private float y = 0.0f;
     private float x = 0.0f;
+    private Vector2 axis = new Vector2(0.0f, 0.0f);
 
+    public float deadZone = 0.3f;
     public float changeSpeed = 10.0f;
 
     private void OnEnable()
@@ -25,16 +27,29 @@ public class RotateObject : MonoBehaviour {
 
     private void controllerEvents_TouchpadAxisChanged(object sender, ControllerInteractionEventArgs e)
     {
-        Vector2 Axis = controllerEvents.GetTouchpadAxis();
-
-        y = y + (Axis.y * changeSpeed * Time.deltaTime);
-        x = x + (Axis.x * changeSpeed * Time.deltaTime);
-
-        updateAngles();
+        axis = controllerEvents.GetTouchpadAxis();
     }
 
-    private void updateAngles()
+    private void Update()
     {
+        if (!((axis.y == 0.0f) && (axis.x == 0.0f)))
+        {
+            UpdateAngles();
+        }
+    }
+
+    private void UpdateAngles()
+    {
+        if ((axis.y > deadZone) || (axis.y < -deadZone))
+        {
+            y = y + (axis.y * changeSpeed * Time.deltaTime);
+        }
+
+        if ((axis.x > deadZone) || (axis.x < -deadZone))
+        {
+            x = x + (axis.x * changeSpeed * Time.deltaTime);
+        }
+
         if (y > 360)
         {
             y = y - 360;
@@ -53,8 +68,7 @@ public class RotateObject : MonoBehaviour {
             x = x + 360;
         }
 
-        Debug.Log("x: " + x + " / y: " + y);
-
-        GetComponent<PlaceObjects>().rotation = new Vector2(x, y);
+        Quaternion placeRotation = Quaternion.Euler(x, y, 0);
+        GetComponent<PlaceObjects>().placeRotation = placeRotation;
     }
 }
