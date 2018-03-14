@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,15 +12,22 @@ public class ObjectInObjectDetection : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == placeObject.objectTag)
+        try
         {
-            placeObject.canPlace = false;
+            if (other.gameObject.tag == placeObject.objectTag)
+            {
+                placeObject.canPlace = false;
 
-            StartCoroutine(Clipping());
+                StartCoroutine(Clipping());
+            }
+            else if (m_clip == false)
+            {
+                placeObject.canPlace = true;
+            }
         }
-        else if (m_clip == false)
+        catch(NullReferenceException ex)
         {
-            placeObject.canPlace = true;
+            Debug.Log("NullReferenceException in Object Detection");
         }
     }
 

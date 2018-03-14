@@ -39,6 +39,17 @@ public class PlaceObjects : MonoBehaviour {
 
             ShowVerison.GetComponentsInChildren<Collider>()[i].gameObject.layer = 2;
         }
+
+        for (int i = 0; i < ShowVerison.GetComponentsInChildren<MeshCollider>().Length; i++)
+        {
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].convex = true;
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].isTrigger = true;
+
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].gameObject.AddComponent<ObjectInObjectDetection>();
+            ShowVerison.GetComponentsInChildren<ObjectInObjectDetection>()[i].placeObject = this;
+
+            ShowVerison.GetComponentsInChildren<MeshCollider>()[i].gameObject.layer = 2;
+        }
     }
 
     private void OnEnable()
@@ -74,8 +85,10 @@ public class PlaceObjects : MonoBehaviour {
 
         if ((pointerRenderer.IsVisible() == true) && (SelectedObject != null) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
         {
-ShowVerison.SetActive(true);
+            ShowVerison.SetActive(true);
             ShowVerison.transform.position = placeLocation;
+            Quaternion placeRotation = Quaternion.Euler(rotation.x, rotation.y, 0);
+            ShowVerison.transform.rotation = placeRotation;
 
             if (canPlace == true)
             {

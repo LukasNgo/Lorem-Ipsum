@@ -11,7 +11,7 @@ public class RotateObject : MonoBehaviour {
     private float y = 0.0f;
     private float x = 0.0f;
 
-    public float changeSpeed = 5.0f;
+    public float changeSpeed = 10.0f;
 
     private void OnEnable()
     {
@@ -27,8 +27,8 @@ public class RotateObject : MonoBehaviour {
     {
         Vector2 Axis = controllerEvents.GetTouchpadAxis();
 
-        y = y + (Axis.y * changeSpeed);
-        x = x + (Axis.x * changeSpeed);
+        y = y + (Axis.y * changeSpeed * Time.deltaTime);
+        x = x + (Axis.x * changeSpeed * Time.deltaTime);
 
         updateAngles();
     }
