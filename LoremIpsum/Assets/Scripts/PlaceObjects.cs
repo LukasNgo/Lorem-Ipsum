@@ -8,7 +8,7 @@ public class PlaceObjects : MonoBehaviour {
     public VRTK_ControllerEvents controllerEvents;
     public VRTK_BasePointerRenderer pointerRenderer;
 
-    public string objectTag = "Object";
+    public string objectTag = "SelectableObjects";
 
     public GameObject SelectedObject = null;//Change to private later
     private GameObject ShowVerison;
