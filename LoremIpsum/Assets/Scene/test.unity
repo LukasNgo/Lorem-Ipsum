@@ -420,6 +420,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 807225128}
+        m_MethodName: ChangeState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &105090885
@@ -1861,7 +1872,7 @@ MonoBehaviour:
   R_controllerEvents: {fileID: 1495150187}
   L_controllerEvents: {fileID: 482529141}
   menu: {fileID: 504852984}
-  PlayerMode: 0
+  PlayerMode: 1
   BuildMode: 0
 --- !u!1 &809945037 stripped
 GameObject:
@@ -3225,7 +3236,7 @@ MonoBehaviour:
   controllerEvents: {fileID: 1495150187}
   pointerRenderer: {fileID: 1495150188}
   objectTag: Object
-  SelectedObject: {fileID: 1792840418926634, guid: 1a36cb711a0d86e47ac0cfb7d7103b32,
+  SelectedObject: {fileID: 1672091879299914, guid: 1f90fbe21e9173045a14484954fc4bdc,
     type: 2}
   canPlace: 1
 --- !u!114 &1495150195
@@ -3811,9 +3822,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abffc7847319a3a4f8d3ce2c5556a4b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMode: {fileID: 1428427072}
-  BuildMode: {fileID: 172702079}
-  LinkMode: {fileID: 1985585703}
   RC: {fileID: 1495150195}
   LC: {fileID: 482529149}
 --- !u!1 &2125398398 stripped
