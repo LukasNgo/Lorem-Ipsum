@@ -3113,6 +3113,7 @@ GameObject:
   - component: {fileID: 1495150192}
   - component: {fileID: 1495150195}
   - component: {fileID: 1495150194}
+  - component: {fileID: 1495150196}
   - component: {fileID: 1495150193}
   m_Layer: 0
   m_Name: P_RightController
@@ -3348,7 +3349,20 @@ MonoBehaviour:
   buildScripts:
   - {fileID: 1495150194}
   - {fileID: 1495150193}
+  - {fileID: 1495150196}
   linkScripts: []
+--- !u!114 &1495150196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1495150185}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20432ceb330ea4841a88c05fff797562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerEvents: {fileID: 1495150187}
 --- !u!1 &1499803528
 GameObject:
   m_ObjectHideFlags: 0
@@ -3894,9 +3908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abffc7847319a3a4f8d3ce2c5556a4b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMode: {fileID: 1428427072}
-  BuildMode: {fileID: 172702079}
-  LinkMode: {fileID: 1985585703}
   RC: {fileID: 1495150195}
   LC: {fileID: 482529149}
 --- !u!1001 &2042869052

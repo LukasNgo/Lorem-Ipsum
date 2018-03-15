@@ -109,12 +109,19 @@ public class PlaceObjects : MonoBehaviour {
     //Used to changed the gameobject selected
     public void ChangeSelectedObject(GameObject newObject)
     {
+        
+
         SelectedObject = newObject;
+        
 
         if (SelectedObject != null)
         {
             ShowVerison = Instantiate(SelectedObject, placeLocation, placeRotation);
             DisableColliders();
+        }
+        else if(SelectedObject == null)
+        {
+            Destroy(ShowVerison);
         }
     }
 
