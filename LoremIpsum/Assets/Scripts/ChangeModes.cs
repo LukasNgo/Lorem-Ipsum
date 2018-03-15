@@ -6,10 +6,6 @@ using VRTK;
 
 public class ChangeModes : MonoBehaviour {
 
-    public GameObject PlayerMode;
-    public GameObject BuildMode;
-    public GameObject LinkMode;
-
     public ControllerManager RC;
     public ControllerManager LC;
 
