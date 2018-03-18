@@ -377,13 +377,24 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 105090885}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1985585705}
         m_MethodName: ChangeToLinkMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 807225128}
+        m_MethodName: ChangeState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1933,8 +1944,20 @@ MonoBehaviour:
   R_controllerEvents: {fileID: 1495150187}
   L_controllerEvents: {fileID: 482529141}
   menu: {fileID: 504852984}
-  PlayerMode: 0
+  PlayerMode: 1
   BuildMode: 0
+  playerColors:
+  - {r: 0.9711967, g: 0.47794116, b: 1, a: 1}
+  - {r: 0.5932889, g: 0.2871972, b: 0.6102941, a: 1}
+  - {r: 0.32920346, g: 0.16663063, b: 0.33823532, a: 1}
+  buildColors:
+  - {r: 1, g: 0.7070994, b: 0.44117647, a: 1}
+  - {r: 0.58823526, g: 0.41809833, b: 0.26384082, a: 1}
+  - {r: 0.22794116, g: 0.15673885, b: 0.09218209, a: 1}
+  linkColors:
+  - {r: 0.38235295, g: 0.76997983, b: 1, a: 1}
+  - {r: 0.22480537, g: 0.43789056, b: 0.5661765, a: 1}
+  - {r: 0.11245675, g: 0.22585018, b: 0.29411763, a: 1}
 --- !u!1 &814077627
 GameObject:
   m_ObjectHideFlags: 0

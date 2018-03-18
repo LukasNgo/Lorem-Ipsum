@@ -60,8 +60,13 @@ public class ControllerManager : MonoBehaviour {
 
                 GetComponent<VRTK_Pointer>().enableTeleport = false;
                 GetComponent<VRTK_InteractGrab>().enabled = false;
+
+                Debug.Log("In Link Mode");
                 break;
         }
+
+        inGameMenu.ChangeMenuColors();
+
     }
 
     private void changeScripts(MonoBehaviour[] scripts, bool enabled)
