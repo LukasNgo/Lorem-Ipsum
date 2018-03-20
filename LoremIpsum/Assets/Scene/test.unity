@@ -4047,40 +4047,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224235042045210228, guid: 6c276635358522447ad698658d86c275,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224235042045210228, guid: 6c276635358522447ad698658d86c275,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224087520729272832, guid: 6c276635358522447ad698658d86c275,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 290
-      objectReference: {fileID: 0}
     - target: {fileID: 114604886239201584, guid: 6c276635358522447ad698658d86c275,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 482529150}
-    - target: {fileID: 114604886239201584, guid: 6c276635358522447ad698658d86c275,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeState
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866319619941698, guid: 6c276635358522447ad698658d86c275, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114402134898184770, guid: 6c276635358522447ad698658d86c275,
-        type: 2}
-      propertyPath: m_DynamicPixelsPerUnit
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 114163727274279522, guid: 6c276635358522447ad698658d86c275,
         type: 2}
       propertyPath: m_placeObjects_script
