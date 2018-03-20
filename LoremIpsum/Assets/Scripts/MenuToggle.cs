@@ -20,6 +20,11 @@ public class MenuToggle : MonoBehaviour {
 
     private bool menuState = false;
 
+    private IEnumerator coroutine;
+
+    [SerializeField]
+    private float m_waitTime = 1.0f;
+
     private void Start()
     {
         ChangeMenuColors();
@@ -57,7 +62,8 @@ public class MenuToggle : MonoBehaviour {
 
         if (PlayerMode == true)
         {
-            GetComponent<VRTK_Pointer>().enableTeleport = !menuState;
+            coroutine = pauseTeleport(m_waitTime);
+            StartCoroutine(coroutine);
         }
         else if (BuildMode == true)
         {
@@ -108,5 +114,11 @@ public class MenuToggle : MonoBehaviour {
     public void ChangeBuildMode(bool updateMode)
     {
         BuildMode = updateMode;
+    }
+
+    private IEnumerator pauseTeleport(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        GetComponent<VRTK_Pointer>().enableTeleport = !menuState;
     }
 }
