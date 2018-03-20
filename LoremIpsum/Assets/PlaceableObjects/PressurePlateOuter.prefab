@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23811744085108944}
   - component: {fileID: 54750695083236968}
   - component: {fileID: 145787828754263388}
+  - component: {fileID: 114218118632990662}
   m_Layer: 9
   m_Name: PressurePlateOuter
   m_TagString: SelectableObjects
@@ -214,6 +215,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.1326084, z: 1}
   m_Center: {x: 0, y: 0.06630417, z: 0}
+--- !u!114 &114218118632990662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626955338159770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438f32ad1b723db449a2c04ea8b55f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Pressure Plate
+  ObjectInfo: Some text here
 --- !u!114 &114669131801529176
 MonoBehaviour:
   m_ObjectHideFlags: 1

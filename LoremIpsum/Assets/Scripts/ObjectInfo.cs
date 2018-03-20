@@ -6,10 +6,13 @@ using VRTK;
 
 public class ObjectInfo : MonoBehaviour
 {
+    [Tooltip("insert controller with pointer renderer component on it")]
     [SerializeField]
     private VRTK_BasePointerRenderer pointerRenderer;
+    [Tooltip("insert object info UI from the hierarchy")]
     [SerializeField]
     private GameObject objectInfoUI;
+    [Tooltip("Insert text component from the object info UI")]
     [SerializeField]
     private Text objectInfoText;
 
