@@ -1891,7 +1891,7 @@ Transform:
   - {fileID: 1083937725}
   - {fileID: 681255952}
   m_Father: {fileID: 1187678214}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &759472234
 MonoBehaviour:
@@ -2379,8 +2379,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 759472233}
   - {fileID: 1913051620}
+  - {fileID: 759472233}
   m_Father: {fileID: 1985585704}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2403,8 +2403,8 @@ MonoBehaviour:
   autoManageVRSettings: 1
   autoLoadSetup: 1
   setups:
-  - {fileID: 759472234}
   - {fileID: 1913051621}
+  - {fileID: 759472234}
 --- !u!1 &1264420883
 GameObject:
   m_ObjectHideFlags: 0
@@ -3919,7 +3919,7 @@ Transform:
   - {fileID: 912468144}
   - {fileID: 1393194857}
   m_Father: {fileID: 1187678214}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1913051621
 MonoBehaviour:
