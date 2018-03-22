@@ -20,16 +20,19 @@ public class ObjectInfo : MonoBehaviour
 
     private void Update ()
     {
-        if (pointerRenderer.IsVisible() && pointerRenderer.IsValidCollision() && pointerRenderer.GetDestinationHit().collider.CompareTag("SelectableObjects"))
+        if (pointerRenderer.IsVisible())
         {
-            selectedObject = pointerRenderer.GetDestinationHit().collider.gameObject;
-            objectInfoUI.SetActive(true);
-            ShowInfo();
-        }
-        else
-        {
-            selectedObject = null;
-            objectInfoUI.SetActive(false);
+            if (pointerRenderer.IsValidCollision() && pointerRenderer.GetDestinationHit().collider.CompareTag("SelectableObjects"))
+            {
+                selectedObject = pointerRenderer.GetDestinationHit().collider.gameObject;
+                objectInfoUI.SetActive(true);
+                ShowInfo();
+            }
+            else
+            {
+                selectedObject = null;
+                objectInfoUI.SetActive(false);
+            }
         }
     }
 
