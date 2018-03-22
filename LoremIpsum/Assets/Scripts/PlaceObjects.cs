@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
-public class PlaceObjects : MonoBehaviour {
+public class PlaceObjects : MonoBehaviour
+{
 
     public VRTK_ControllerEvents controllerEvents;
     public VRTK_BasePointerRenderer pointerRenderer;
@@ -80,46 +81,51 @@ public class PlaceObjects : MonoBehaviour {
 
     private void Update()
     {
-	if (SelectedObject != null)
-	{
-        placeLocation = pointerRenderer.GetDestinationHit().point;
-
-        if ((pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
+        if (SelectedObject != null)
         {
-            ShowVerison.SetActive(true);
-            ShowVerison.transform.position = placeLocation;
-            ShowVerison.transform.rotation = placeRotation;
+            placeLocation = pointerRenderer.GetDestinationHit().point;
 
-            if (canPlace == true)
+            if ((pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
             {
-                ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.validCollisionColor;
+                ShowVerison.SetActive(true);
+                ShowVerison.transform.position = placeLocation;
+                ShowVerison.transform.rotation = placeRotation;
+
+                Vector3 tempVector = ShowVerison.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+
+                ShowVerison.transform.position = tempVector;
+                placeLocation = ShowVerison.transform.position;
+
+                if (canPlace == true)
+                {
+                    ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.validCollisionColor;
+                }
+                else
+                {
+                    ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.invalidCollisionColor;
+                }
             }
             else
             {
-                ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.invalidCollisionColor;
+                ShowVerison.SetActive(false);
             }
         }
-        else
-        {
-            ShowVerison.SetActive(false);
-        }
-	}
     }
 
     //Used to changed the gameobject selected
     public void ChangeSelectedObject(GameObject newObject)
     {
-        
+
 
         SelectedObject = newObject;
-        
+
 
         if (SelectedObject != null)
         {
             ShowVerison = Instantiate(SelectedObject, placeLocation, placeRotation);
             DisableColliders();
         }
-        else if(SelectedObject == null)
+        else if (SelectedObject == null)
         {
             Destroy(ShowVerison);
         }
