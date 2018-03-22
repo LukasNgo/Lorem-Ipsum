@@ -103,8 +103,6 @@ public class MenuToggle : MonoBehaviour {
             newColor.pressedColor = newColors[2];
 
             menu.GetComponentsInChildren<Button>()[i].colors = newColor;
-
-            Debug.Log("Changing colors " + i);
         }
 
         modeText.GetComponent<Text>().color = newColors[2];

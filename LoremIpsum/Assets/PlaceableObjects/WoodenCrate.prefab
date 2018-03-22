@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33968312953379926}
   - component: {fileID: 65061291959591882}
   - component: {fileID: 23863249899316156}
+  - component: {fileID: 114522501602562186}
   - component: {fileID: 54158041751485022}
   - component: {fileID: 114480709699680408}
   - component: {fileID: 114584008474468610}
@@ -186,6 +187,20 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114522501602562186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1792840418926634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08cd92f531cea3439d098459395bcb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkID: 4
+  linkIDList: 01000000
+  listCanLinkTo: 1
 --- !u!114 &114584008474468610
 MonoBehaviour:
   m_ObjectHideFlags: 1
