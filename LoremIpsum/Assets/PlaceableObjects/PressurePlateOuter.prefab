@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33952177736051752}
   - component: {fileID: 65884085616219984}
   - component: {fileID: 23811744085108944}
+  - component: {fileID: 114757203308499548}
   - component: {fileID: 54750695083236968}
   - component: {fileID: 145787828754263388}
   m_Layer: 9
@@ -262,6 +263,20 @@ MonoBehaviour:
   selfRenderer: {fileID: 23747119098196184}
   lightRenderer: {fileID: 0}
   myLight: {fileID: 0}
+--- !u!114 &114757203308499548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626955338159770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62acc9b2c68e3d449807647b307c77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkID: 3
+  linkIDList: 
+  listCanLinkTo: 0
 --- !u!145 &145787828754263388
 SpringJoint:
   m_ObjectHideFlags: 1

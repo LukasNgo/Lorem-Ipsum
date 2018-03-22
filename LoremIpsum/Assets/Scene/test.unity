@@ -339,7 +339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 170}
+  m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72755036
@@ -1026,7 +1026,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 431946213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1.4, y: 0.9, z: 0.1}
   m_Children:
   - {fileID: 504852985}
@@ -1644,7 +1644,7 @@ GameObject:
   - component: {fileID: 599316482}
   - component: {fileID: 599316481}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Mode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1657,7 +1657,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 599316479}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 7.19}
   m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_Children:
   - {fileID: 72755035}
@@ -3306,6 +3306,7 @@ GameObject:
   - component: {fileID: 1495150194}
   - component: {fileID: 1495150196}
   - component: {fileID: 1495150193}
+  - component: {fileID: 1495150197}
   m_Layer: 0
   m_Name: P_RightController
   m_TagString: Untagged
@@ -3541,7 +3542,8 @@ MonoBehaviour:
   - {fileID: 1495150194}
   - {fileID: 1495150193}
   - {fileID: 1495150196}
-  linkScripts: []
+  linkScripts:
+  - {fileID: 1495150197}
 --- !u!114 &1495150196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3554,6 +3556,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerEvents: {fileID: 1495150187}
+--- !u!114 &1495150197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1495150185}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8f8c1c5f931734eb5cd44e1233a817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerEvents: {fileID: 1495150187}
+  pointerRenderer: {fileID: 1495150188}
+  wantToLinkMenu: {fileID: 0}
+  canLinkResultMenu: {fileID: 0}
+  canLinkTextResult: {fileID: 0}
+  objectString: SelectableObjects
 --- !u!1 &1499803528
 GameObject:
   m_ObjectHideFlags: 0
