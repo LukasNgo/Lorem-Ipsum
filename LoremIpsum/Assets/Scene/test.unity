@@ -3860,6 +3860,8 @@ MonoBehaviour:
   wantToLinkMenu: {fileID: 1470146950}
   canLinkResultMenu: {fileID: 337081688}
   canLinkTextResult: {fileID: 527714240}
+  showLinkManager: {fileID: 114956939634720342, guid: dfcebd88472030c48ba8a14c52068b0e,
+    type: 2}
   objectString: SelectableObjects
 --- !u!1 &1499803528
 GameObject:

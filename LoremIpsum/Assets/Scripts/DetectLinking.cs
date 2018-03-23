@@ -10,10 +10,10 @@ public class DetectLinking : MonoBehaviour {
     public VRTK_BasePointerRenderer pointerRenderer;
 
     public GameObject wantToLinkMenu;
-
     public GameObject canLinkResultMenu;
     public Text canLinkTextResult;
 
+    public ShowLinkManager showLinkManager;
     public string objectString = "SelectableObjects";
 
     private GameObject firstObject = null;
@@ -69,6 +69,9 @@ public class DetectLinking : MonoBehaviour {
         if (valid == true)
         {
             //Send Link information to link objects script
+
+            showLinkManager.AddLink(firstObject, secondObject);
+
             Debug.Log("Valid");
             canLinkTextResult.text = "Valid Link";
         }
