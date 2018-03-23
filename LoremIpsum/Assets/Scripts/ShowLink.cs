@@ -25,5 +25,13 @@ public class ShowLink : MonoBehaviour {
         {
             myManager.RemoveMe(gameObject);
         }
+        else if ((m_firstObject.activeSelf == false) || (m_secondObject.activeSelf == false))
+        {
+            gameObject.SetActive(false);
+        }
+        else if ((m_firstObject.activeSelf == true) && (m_secondObject.activeSelf == true))
+        {
+            gameObject.SetActive(true);
+        }
     }
 }
