@@ -10,9 +10,14 @@ public class MenuToggle : MonoBehaviour {
     public VRTK_ControllerEvents L_controllerEvents;
     public GameObject menu;
 
+    public GameObject modeText;
+    public GameObject modePanel;
+
     public bool PlayerMode = false;
     public bool BuildMode = false;
     //public bool LinkMode = false;
+
+    public string[] modeTitles;
 
     public Color[] playerColors;
     public Color[] buildColors;
@@ -77,14 +82,17 @@ public class MenuToggle : MonoBehaviour {
         if (PlayerMode == true)
         {
             newColors = playerColors;
+            modeText.GetComponent<Text>().text = modeTitles[0];
         }
         else if (BuildMode == true)
         {
             newColors = buildColors;
+            modeText.GetComponent<Text>().text = modeTitles[1];
         }
         else
         {
             newColors = linkColors;
+            modeText.GetComponent<Text>().text = modeTitles[2];
         }
 
         for (int i = 0; i < menu.GetComponentsInChildren<Button>().Length; i++)
@@ -98,6 +106,10 @@ public class MenuToggle : MonoBehaviour {
 
             Debug.Log("Changing colors " + i);
         }
+
+        modeText.GetComponent<Text>().color = newColors[2];
+        modePanel.GetComponent<Image>().color = newColors[0];
+
     }
 
     public void ChangePlayerMode(bool updateMode)

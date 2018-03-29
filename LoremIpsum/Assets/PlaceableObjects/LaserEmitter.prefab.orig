@@ -22,16 +22,14 @@ GameObject:
   - component: {fileID: 33581214242375138}
   - component: {fileID: 135398538450502580}
   - component: {fileID: 23055465401044814}
+  - component: {fileID: 114391121876622328}
   - component: {fileID: 114672193709372650}
   - component: {fileID: 120137689598554208}
   - component: {fileID: 54148126572312824}
-  m_Layer: 0
+  - component: {fileID: 114495143060858248}
+  m_Layer: 9
   m_Name: LaserEmitter
-<<<<<<< HEAD
-  m_TagString: Object
-=======
   m_TagString: SelectableObjects
->>>>>>> objects-menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +103,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+<<<<<<< HEAD
+--- !u!114 &114495143060858248
+=======
+--- !u!114 &114391121876622328
+>>>>>>> origin/DetectObjectLink
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672091879299914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+<<<<<<< HEAD
+  m_Script: {fileID: 11500000, guid: 438f32ad1b723db449a2c04ea8b55f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Laser Emitter
+  ObjectInfo: Some text here
+=======
+  m_Script: {fileID: 11500000, guid: f62acc9b2c68e3d449807647b307c77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkID: 1
+  linkIDList: 04000000
+  listCanLinkTo: 1
+>>>>>>> origin/DetectObjectLink
 --- !u!114 &114672193709372650
 MonoBehaviour:
   m_ObjectHideFlags: 1
