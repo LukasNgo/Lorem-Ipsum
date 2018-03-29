@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 54750695083236968}
   - component: {fileID: 145787828754263388}
   - component: {fileID: 114218118632990662}
+  - component: {fileID: 114996279680667788}
   m_Layer: 9
   m_Name: PressurePlateOuter
   m_TagString: SelectableObjects
@@ -290,7 +291,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkID: 3
   linkIDList: 
-  listCanLinkTo: 0
+  listCanLinkTo: 1
+--- !u!114 &114996279680667788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626955338159770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62acc9b2c68e3d449807647b307c77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkID: 3
+  linkIDList: 
+  listCanLinkTo: 1
 --- !u!145 &145787828754263388
 SpringJoint:
   m_ObjectHideFlags: 1

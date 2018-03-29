@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114449527843477630}
   - component: {fileID: 114025621702612772}
   - component: {fileID: 114937806461485834}
+  - component: {fileID: 114142181034846664}
   m_Layer: 9
   m_Name: WoodenCrate
   m_TagString: SelectableObjects
@@ -135,6 +136,20 @@ MonoBehaviour:
   customOutlineModels: []
   customOutlineModelPaths: []
   enableSubmeshHighlight: 0
+--- !u!114 &114142181034846664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1792840418926634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62acc9b2c68e3d449807647b307c77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkID: 4
+  linkIDList: 01000000
+  listCanLinkTo: 1
 --- !u!114 &114449527843477630
 MonoBehaviour:
   m_ObjectHideFlags: 1
