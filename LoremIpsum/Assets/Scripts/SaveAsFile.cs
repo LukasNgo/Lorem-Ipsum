@@ -14,7 +14,7 @@ public class SaveAsFile : MonoBehaviour {
 
     public string m_basePath = @"c:\temp\";
 
-    private string fileName = "test.txt";
+    private string fileName = "test";
     private string m_currentPath = @"c:\temp\";
 
     public void SaveLevel()
