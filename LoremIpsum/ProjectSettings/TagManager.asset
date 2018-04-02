@@ -6,6 +6,8 @@ TagManager:
   tags:
   - SelectableObjects
   - ShowItem
+  - VRGazeInteractable
+  - Object
   layers:
   - Default
   - TransparentFX

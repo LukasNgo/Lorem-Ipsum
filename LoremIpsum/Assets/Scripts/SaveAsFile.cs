@@ -8,6 +8,7 @@ public class SaveAsFile : MonoBehaviour {
 
     public string[] fileContent = {"Test"};
 
+    public GameObject saveMenu;
     public Text fileNameText;
     public GameObject overwriteMenu;
 
@@ -28,6 +29,7 @@ public class SaveAsFile : MonoBehaviour {
         }
         else
         {
+            saveMenu.SetActive(false);
             overwriteMenu.SetActive(true);
         }
     }
