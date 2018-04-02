@@ -12,8 +12,9 @@ public class LevelListButton : MonoBehaviour {
     public void SetText(string text)
     {
         levelName = text;
+        string[] fileSplit = levelName.Split('\\');
 
-        myText.text = text;
+        myText.text = fileSplit[fileSplit.Length - 1];
     }
 
     public void OnClick()
