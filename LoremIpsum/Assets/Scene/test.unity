@@ -3670,6 +3670,7 @@ GameObject:
   - component: {fileID: 1495150196}
   - component: {fileID: 1495150193}
   - component: {fileID: 1495150197}
+  - component: {fileID: 1495150198}
   m_Layer: 0
   m_Name: P_RightController
   m_TagString: Untagged
@@ -3938,6 +3939,18 @@ MonoBehaviour:
   showLinkManager: {fileID: 114956939634720342, guid: dfcebd88472030c48ba8a14c52068b0e,
     type: 2}
   objectString: SelectableObjects
+  linkObjects_script: {fileID: 1495150198}
+--- !u!114 &1495150198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1495150185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb6a020fea7c9345bff7e43e256fdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1499803528
 GameObject:
   m_ObjectHideFlags: 0

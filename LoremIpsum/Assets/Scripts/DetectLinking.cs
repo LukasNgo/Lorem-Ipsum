@@ -21,6 +21,8 @@ public class DetectLinking : MonoBehaviour {
 
     private bool selectingFirst = true;
 
+    public LinkObjects linkObjects_script;
+
     private void OnEnable()
     {
         controllerEvents.TriggerReleased += controllerEvents_TriggerReleased;
@@ -69,7 +71,7 @@ public class DetectLinking : MonoBehaviour {
         if (valid == true)
         {
             //Send Link information to link objects script
-
+            linkObjects_script.GetComponent<LinkObjects>().setLinkedObjects(firstObject, secondObject);
             showLinkManager.AddLink(firstObject, secondObject);
 
             Debug.Log("Valid");

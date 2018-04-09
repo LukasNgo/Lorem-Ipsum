@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 23747119098196184}
   - component: {fileID: 54063595418518774}
   - component: {fileID: 114669131801529176}
+  - component: {fileID: 114050175827383192}
   m_Layer: 9
   m_Name: PressurePadMain
   m_TagString: Object
@@ -217,6 +218,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.1326084, z: 1}
   m_Center: {x: 0, y: 0.06630417, z: 0}
+--- !u!114 &114050175827383192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807454119807074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cf2211d2cc2a64e8ca525f4c958763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isEmitter: 1
 --- !u!114 &114218118632990662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkID: 3
-  linkIDList: 
+  linkIDList: 04000000
   listCanLinkTo: 1
 --- !u!114 &114996279680667788
 MonoBehaviour:
@@ -304,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkID: 3
-  linkIDList: 
+  linkIDList: 04000000
   listCanLinkTo: 1
 --- !u!145 &145787828754263388
 SpringJoint:
