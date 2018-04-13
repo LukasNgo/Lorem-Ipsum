@@ -15,6 +15,11 @@ public class LinkObjects : MonoBehaviour {
 
     private bool isEmitter = false;
 
+    private Component[] m_componentsInEmitter;
+
+    private UnityEvent activatedEvent;
+    private UnityEvent deactivatedEvent;
+
     public void setLinkedObjects(GameObject _first, GameObject _second)
     {
         m_linkableObjects[0] = _first;
@@ -53,9 +58,15 @@ public class LinkObjects : MonoBehaviour {
 
     private void TargetObjectInUnityEvents()
     {
-        // Check for activatedEvent & deactivatedEvent fields in comps
+        
 
-        // insert other Object into parameter
+        m_componentsInEmitter = m_emitter.GetComponentsInChildren<Component>();
+
+        foreach (Component comp in m_componentsInEmitter)
+        {
+            Debug.Log("Adding target");
+            // Broadcast message to all comps, add target
+        }
     }
 
     public void setEmitterState(bool isEmitterState)
