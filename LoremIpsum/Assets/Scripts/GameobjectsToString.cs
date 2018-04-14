@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameobjectsToString : MonoBehaviour {
 
-    public GameObject[] m_objectsToSave;
-    public List<string> m_returnString;
+    private GameObject[] m_objectsToSave;
+    private List<string> m_returnString;
 
 	public List<string> ConvertGameObjects(){
 
