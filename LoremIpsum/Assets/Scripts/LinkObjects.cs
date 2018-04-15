@@ -58,15 +58,17 @@ public class LinkObjects : MonoBehaviour {
 
     private void TargetObjectInUnityEvents()
     {
-        
+        m_emitter.BroadcastMessage("changeListener", m_receiver);
 
+        /*
         m_componentsInEmitter = m_emitter.GetComponentsInChildren<Component>();
 
         foreach (Component comp in m_componentsInEmitter)
         {
             Debug.Log("Adding target");
-            // Broadcast message to all comps, add target
+            Broadcast message to all comps, add target
         }
+        */
     }
 
     public void setEmitterState(bool isEmitterState)
