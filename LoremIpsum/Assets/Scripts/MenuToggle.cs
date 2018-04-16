@@ -60,17 +60,9 @@ public class MenuToggle : MonoBehaviour {
         menuState = !menuState;
         menu.SetActive(menuState);
 
-        if (PlayerMode == true)
-        {
-            GetComponent<VRTK_Pointer>().enableTeleport = !menuState;
-        }
-        else if (BuildMode == true)
+        if (BuildMode == true)
         {
             R_controllerEvents.gameObject.GetComponent<PlaceObjects>().MenuUp(menuState);
-        }
-        else
-        {
-            //Link Mode stuff
         }
 
     }

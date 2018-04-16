@@ -13,6 +13,9 @@ public class ControllerManager : MonoBehaviour {
     public MonoBehaviour[] buildScripts;
     public MonoBehaviour[] linkScripts;
 
+    [SerializeField]
+    private float m_waitTime = 3.0f;
+
     public void ChangeMode(string mode)
     {
         controllerMode = mode;
@@ -33,7 +36,8 @@ public class ControllerManager : MonoBehaviour {
                 inGameMenu.PlayerMode = true;
                 inGameMenu.BuildMode = false;
 
-                GetComponent<VRTK_Pointer>().enableTeleport = true;
+                GetComponent<VRTK_Pointer>().enableTeleport = false;
+                StartCoroutine(pauseTeleport());
                 GetComponent<VRTK_InteractGrab>().enabled = true;
 
                 break;
@@ -67,6 +71,12 @@ public class ControllerManager : MonoBehaviour {
 
         inGameMenu.ChangeMenuColors();
 
+    }
+
+    private IEnumerator pauseTeleport()
+    {
+        yield return new WaitForSeconds(m_waitTime);
+        GetComponent<VRTK_Pointer>().enableTeleport = true;
     }
 
     private void changeScripts(MonoBehaviour[] scripts, bool enabled)
