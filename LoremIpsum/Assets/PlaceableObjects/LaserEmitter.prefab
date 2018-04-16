@@ -23,10 +23,12 @@ GameObject:
   - component: {fileID: 135398538450502580}
   - component: {fileID: 23055465401044814}
   - component: {fileID: 114672193709372650}
+  - component: {fileID: 114932454854834258}
   - component: {fileID: 120137689598554208}
   - component: {fileID: 54148126572312824}
   - component: {fileID: 114495143060858248}
   - component: {fileID: 114132909468581628}
+  - component: {fileID: 114411891433325250}
   m_Layer: 9
   m_Name: LaserEmitter
   m_TagString: SelectableObjects
@@ -117,6 +119,18 @@ MonoBehaviour:
   linkID: 1
   linkIDList: 04000000
   listCanLinkTo: 1
+--- !u!114 &114411891433325250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672091879299914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cf2211d2cc2a64e8ca525f4c958763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isEmitter: 1
 --- !u!114 &114495143060858248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,14 +150,30 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1672091879299914}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0edacdf1c50a92d43ab3c80b0179275a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pairedReceiver: {fileID: 0}
-  inactiveMaterial: {fileID: 0}
-  activeMaterial: {fileID: 0}
+  inactiveMaterial: {fileID: 2100000, guid: e89fb46c67b12604099379e6c7c2b5e1, type: 2}
+  activeMaterial: {fileID: 2100000, guid: 5f9e1dd342616e545bbec89c69dab7db, type: 2}
+  maxReflections: 3
+  lineRenderer: {fileID: 120137689598554208}
+  isOn: 1
+--- !u!114 &114932454854834258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672091879299914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec70d274ccca2e44da48df34a608c2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inactiveMaterial: {fileID: 2100000, guid: e89fb46c67b12604099379e6c7c2b5e1, type: 2}
+  activeMaterial: {fileID: 2100000, guid: 5f9e1dd342616e545bbec89c69dab7db, type: 2}
   maxReflections: 3
   lineRenderer: {fileID: 120137689598554208}
   isOn: 1

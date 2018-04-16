@@ -31,7 +31,10 @@ public class TemporaryEmitLaser : LevelRequirement
 
     private void Start()
     {
-        receiverRenderer = pairedReceiver.GetComponent<Renderer>();
+        if (pairedReceiver != null)
+        {
+            receiverRenderer = pairedReceiver.GetComponent<Renderer>();
+        }
     }
 
     public void SetLaserActive(bool isActive)
@@ -41,70 +44,74 @@ public class TemporaryEmitLaser : LevelRequirement
 
     void FixedUpdate()
     {
-        for (int i = 0; i < lineRenderer.positionCount; i++)
+        // checks pair receiver is available
+        if (pairedReceiver != null)
         {
-            lineRenderer.SetPosition(i, Vector3.zero);
-        }
-
-        if (isOn)
-        {
-            Vector3 dir = transform.right;
-            Vector3 startPos = transform.position;
-            int count = 1;
-            List<Vector3> rendPositions = new List<Vector3>();
-
-            RaycastHit hit;
-            rendPositions.Add(startPos);
-
-            do
+            for (int i = 0; i < lineRenderer.positionCount; i++)
             {
-                count++;
+                lineRenderer.SetPosition(i, Vector3.zero);
+            }
 
-                if (Physics.Raycast(startPos, dir, out hit, 50))
+            if (isOn)
+            {
+                Vector3 dir = transform.right;
+                Vector3 startPos = transform.position;
+                int count = 1;
+                List<Vector3> rendPositions = new List<Vector3>();
+
+                RaycastHit hit;
+                rendPositions.Add(startPos);
+
+                do
                 {
-                    if (hit.collider.gameObject == pairedReceiver)
+                    count++;
+
+                    if (Physics.Raycast(startPos, dir, out hit, 50))
                     {
-                        rendPositions.Add(hit.point);
-                        receiverRenderer.material = activeMaterial;
-                        active = true;
-                        break;
-                    }
-                    else if (hit.collider.GetComponent<MirrorReflection>() != null)
-                    {
-                        dir = Vector3.Reflect(dir, hit.normal);
-                        startPos = hit.point;
-                        Debug.DrawRay(startPos, dir * hit.distance, Color.green);
-                        rendPositions.Add(startPos);
-                        active = false;
+                        if (hit.collider.gameObject == pairedReceiver)
+                        {
+                            rendPositions.Add(hit.point);
+                            receiverRenderer.material = activeMaterial;
+                            active = true;
+                            break;
+                        }
+                        else if (hit.collider.GetComponent<MirrorReflection>() != null)
+                        {
+                            dir = Vector3.Reflect(dir, hit.normal);
+                            startPos = hit.point;
+                            Debug.DrawRay(startPos, dir * hit.distance, Color.green);
+                            rendPositions.Add(startPos);
+                            active = false;
+                        }
+                        else
+                        {
+                            rendPositions.Add(hit.point);
+                            receiverRenderer.material = inactiveMaterial;
+                            active = false;
+                            break;
+                        }
                     }
                     else
                     {
-                        rendPositions.Add(hit.point);
+                        rendPositions.Add(startPos + (dir * 50));
                         receiverRenderer.material = inactiveMaterial;
                         active = false;
                         break;
                     }
                 }
-                else
+                while (count <= maxReflections);
+
+                int rendPosCount = 0;
+                lineRenderer.positionCount = count;
+                rendPositions.ForEach(position =>
                 {
-                    rendPositions.Add(startPos + (dir * 50));
-                    receiverRenderer.material = inactiveMaterial;
-                    active = false;
-                    break;
-                }
+                    lineRenderer.SetPosition(rendPosCount, position);
+                    rendPosCount++;
+                });
             }
-            while (count <= maxReflections);
-
-            int rendPosCount = 0;
-            lineRenderer.positionCount = count;
-            rendPositions.ForEach(position =>
-            {
-                lineRenderer.SetPosition(rendPosCount, position);
-                rendPosCount++;
-            });
-
-            //Debug.DrawRay(transform.position, transform.right * hit.distance, Color.green);
         }
+            //Debug.DrawRay(transform.position, transform.right * hit.distance, Color.green);
+        
     }
 
     public override bool IsComplete()
@@ -115,5 +122,7 @@ public class TemporaryEmitLaser : LevelRequirement
     public void changeListener(GameObject objectToPair)
     {
         pairedReceiver = objectToPair;
+        receiverRenderer = pairedReceiver.GetComponent<Renderer>();
+        Debug.Log("New paired object: " + pairedReceiver);
     }
 }

@@ -42,13 +42,11 @@ public class DetectLinking : MonoBehaviour {
             {
                 firstObject = pointerRenderer.GetDestinationHit().collider.gameObject;
                 selectingFirst = false;
-                Debug.Log("First Object Selected");
             }
             else if (pointerRenderer.GetDestinationHit().collider.gameObject != firstObject)
             {
                 secondObject = pointerRenderer.GetDestinationHit().collider.gameObject;
                 wantToLinkMenu.SetActive(true);
-                Debug.Log("Second Object Selected");
             }
 
         }
@@ -64,22 +62,21 @@ public class DetectLinking : MonoBehaviour {
 
     public void CheckLinkIsValid()//Selected on wantToLinkMenu button "YES"
     {
-        Debug.Log("Checking if Valid");
         int firstID = firstObject.GetComponent<ObjectLinkRules>().linkID;
         bool valid = secondObject.GetComponent<ObjectLinkRules>().CanBeLinkedToID(firstID);
 
         if (valid == true)
         {
             //Send Link information to link objects script
+            showLinkManager.ResetIfLinked(firstObject);
+            showLinkManager.ResetIfLinked(secondObject);
             linkObjects_script.GetComponent<LinkObjects>().setLinkedObjects(firstObject, secondObject);
             showLinkManager.AddLink(firstObject, secondObject);
 
-            Debug.Log("Valid");
             canLinkTextResult.text = "Valid Link";
         }
         else
         {
-            Debug.Log("Not valid");
             canLinkTextResult.text = "Non-Valid Link";
         }
 
