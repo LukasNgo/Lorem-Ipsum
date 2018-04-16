@@ -33,5 +33,9 @@ public class ShowLink : MonoBehaviour {
         {
             gameObject.SetActive(true);
         }
+
+        myLine.SetPosition(0, m_firstObject.transform.position);
+        myLine.SetPosition(1, m_secondObject.transform.position);
+
     }
 }
