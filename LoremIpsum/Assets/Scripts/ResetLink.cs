@@ -21,7 +21,7 @@ public class ResetLink : MonoBehaviour {
 
     public void resetObject(GameObject objectToReset)
     {
-        /*
+        
         string toSpilt = objectToReset.name;
         string[] splitResult = toSpilt.Split(new char[] { ' ', '(' });
 
@@ -34,12 +34,13 @@ public class ResetLink : MonoBehaviour {
                 m_transform = objectToReset.transform;
                 Destroy(objectToReset);
 
-                GameObject exsists = null;
-                exsists = Instantiate(objectArray[i].gameObject, m_transform);
-
-                if (exsists != null)
+                GameObject exists = null;
+                Debug.Log("objectInArray selected: " + objectArray[i]);
+                exists = Instantiate(objectArray[i], m_transform.position, m_transform.rotation) as GameObject;
+                Debug.Log("Object is assigned exists: " + exists);
+                if (exists != null)
                 {
-                    exsists.SetActive(true);
+                    exists.SetActive(true);
 
                     Debug.Log("Instantiated");
                 }
@@ -53,6 +54,6 @@ public class ResetLink : MonoBehaviour {
                 Debug.Log("Object does not exist in list");
             }
         }
-        */
+        
     }
 }

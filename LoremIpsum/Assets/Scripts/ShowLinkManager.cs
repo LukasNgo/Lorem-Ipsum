@@ -25,7 +25,7 @@ public class ShowLinkManager : MonoBehaviour {
     public void ResetIfLinked(GameObject _me)
     {
         GameObject link = null;
-        //GameObject notMe = null;
+        GameObject notMe = null;
 
             Debug.Log(m_listOfLinks.Count);
         for (int i= 0; i < m_listOfLinks.Count; i++)
@@ -35,12 +35,12 @@ public class ShowLinkManager : MonoBehaviour {
                 if (_me == m_listOfLinks[i].GetComponent<ShowLink>().firstObject)
                 {
                     link = m_listOfLinks[i];
-                    //notMe = m_listOfLinks[i].GetComponent<ShowLink>().secondObject;
+                    notMe = m_listOfLinks[i].GetComponent<ShowLink>().secondObject;
                 }
                 else if (_me == m_listOfLinks[i].GetComponent<ShowLink>().secondObject)
                 {
                     link = m_listOfLinks[i];
-                    //notMe = m_listOfLinks[i].GetComponent<ShowLink>().firstObject;
+                    notMe = m_listOfLinks[i].GetComponent<ShowLink>().firstObject;
                 }
             }
         }
@@ -48,7 +48,7 @@ public class ShowLinkManager : MonoBehaviour {
         if (link != null)
         {
             link.GetComponent<ShowLink>().UnlinkObjects();
-            //GetComponent<ResetLink>().resetObject(notMe);
+            GetComponent<ResetLink>().resetObject(notMe);
         }
         
     }

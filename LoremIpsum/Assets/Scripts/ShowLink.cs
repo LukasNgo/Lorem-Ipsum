@@ -42,6 +42,7 @@ public class ShowLink : MonoBehaviour {
     {
         myManager.RemoveMe(gameObject);
         Destroy(gameObject);
+        Debug.Log("Unlinking Objects");
     }
 
 }
