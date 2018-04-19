@@ -6,8 +6,6 @@ using System.IO;
 
 public class SaveAsFile : MonoBehaviour {
 
-    public string[] fileContent = {"Test"};
-
     public GameObject saveMenu;
     public Text fileNameText;
     public GameObject overwriteMenu;
@@ -36,20 +34,8 @@ public class SaveAsFile : MonoBehaviour {
 
     public void Save()//Done like this so it can be overwritten
     {
-        System.IO.File.WriteAllLines(m_currentPath, fileContent);
+        System.IO.File.WriteAllLines(m_currentPath, GetComponent<GameobjectsToString>().ListToArray());
     }
 
-    public void NewFileContent(List<string> newContent)
-    {
-        int size = newContent.Count;
-        string[] newFileContent = new string[size];
-
-        for (int i = 0; i < size; i++)
-        {
-            newFileContent[i] = newContent[i];
-        }
-
-        fileContent = newFileContent;
-    }
 
 }

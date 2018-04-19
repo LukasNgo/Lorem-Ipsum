@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class GameobjectsToString : MonoBehaviour {
 
-    private GameObject[] m_objectsToSave;
-    private List<string> m_returnString;
+    public GameObject[] objectsToSave;
+    public List<string> returnString;
 
-	public List<string> ConvertGameObjects(){
+    public List<string> ConvertGameObjects(){
 
-		m_objectsToSave = GameObject.FindGameObjectsWithTag("SelectableObjects");
+        returnString.Clear();
 
-        if (m_objectsToSave != null)
+		objectsToSave = GameObject.FindGameObjectsWithTag("SelectableObjects");
+
+        if (objectsToSave != null)
         {
-            foreach (GameObject saveObject in m_objectsToSave)
+            foreach (GameObject saveObject in objectsToSave)
             {
-                m_returnString.Add(saveObject.ToString());
+                returnString.Add(saveObject.ToString());      //object's name
                 Vector3 _tempVector = saveObject.transform.position;
-                m_returnString.Add(_tempVector.ToString("G4"));
-                m_returnString.Add(saveObject.transform.rotation.ToString("G4"));
+                returnString.Add(_tempVector.ToString("G4"));     //object's position
+                returnString.Add(saveObject.transform.rotation.ToString("G4"));       //object's rotation
             }
         }
-        return m_returnString;
+        return returnString;
 	}
+
+    public string[] ListToArray()
+    {
+        int _size = ConvertGameObjects().Count;
+        string[] _newFileContent = new string[_size];
+
+        for (int i = 0; i < _size; i++)
+        {
+            _newFileContent[i] = ConvertGameObjects()[i];
+        }
+        
+        return _newFileContent;
+    }
 }
