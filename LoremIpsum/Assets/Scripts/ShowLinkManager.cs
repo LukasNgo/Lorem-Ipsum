@@ -48,7 +48,7 @@ public class ShowLinkManager : MonoBehaviour {
         if (link != null)
         {
             link.GetComponent<ShowLink>().UnlinkObjects();
-            GetComponent<ResetLink>().resetObject(notMe);
+            GameObject.Find("VisualLinkManager").GetComponent<ResetLink>().resetObject(notMe);
         }
         
     }
