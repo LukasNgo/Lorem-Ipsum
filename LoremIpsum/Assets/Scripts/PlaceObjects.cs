@@ -23,10 +23,16 @@ public class PlaceObjects : MonoBehaviour
 
     private void Start()
     {
-        ShowVerison = Instantiate(SelectedObject, placeLocation, placeRotation);
+        GetComponent<RotateObject>().rotationRules = SelectedObject.GetComponent<ObjectsRotations>();
 
-        DisableColliders();
-        //comment out later as it should start out null
+        if (SelectedObject != null)
+        {
+            placeRotation = SelectedObject.transform.rotation;
+
+            ShowVerison = Instantiate(SelectedObject, placeLocation, placeRotation);
+
+            DisableColliders();
+        }
     }
 
     private void DisableColliders()
@@ -89,6 +95,7 @@ public class PlaceObjects : MonoBehaviour
             {
                 ShowVerison.SetActive(true);
                 ShowVerison.transform.position = placeLocation;
+
                 ShowVerison.transform.rotation = placeRotation;
 
                 Vector3 tempVector = ShowVerison.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
@@ -115,13 +122,14 @@ public class PlaceObjects : MonoBehaviour
     //Used to changed the gameobject selected
     public void ChangeSelectedObject(GameObject newObject)
     {
-
-
         SelectedObject = newObject;
 
+        GetComponent<RotateObject>().rotationRules = SelectedObject.GetComponent<ObjectsRotations>();
 
         if (SelectedObject != null)
         {
+            placeRotation = SelectedObject.transform.rotation;
+
             ShowVerison = Instantiate(SelectedObject, placeLocation, placeRotation);
             DisableColliders();
         }

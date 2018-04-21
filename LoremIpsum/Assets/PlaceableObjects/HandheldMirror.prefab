@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 114780336117264388}
   - component: {fileID: 114280341228938122}
   - component: {fileID: 114290052964989732}
+  - component: {fileID: 114563572726799474}
   - component: {fileID: 114550536005354280}
   m_Layer: 9
   m_Name: HandheldMirror
@@ -392,6 +393,29 @@ MonoBehaviour:
   linkID: 0
   linkIDList: 
   listCanLinkTo: 0
+--- !u!114 &114563572726799474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646095386235962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fac5e24666b8994ab05efb726b747d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleRotationsX:
+  - 0
+  - 90
+  - 180
+  - 270
+  possibleRotationsY:
+  - 0
+  - 90
+  - 180
+  - 270
+  rotationLimitX: 4
+  rotationLimitY: 4
 --- !u!114 &114742274912795928
 MonoBehaviour:
   m_ObjectHideFlags: 1

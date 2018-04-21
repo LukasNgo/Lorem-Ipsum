@@ -7,13 +7,20 @@ using VRTK;
 public class RotateObject : MonoBehaviour {
 
     public VRTK_ControllerEvents controllerEvents;
+    public ObjectsRotations rotationRules;
 
-    private float y = 0.0f;
-    private float x = 0.0f;
+    private int rotationNumX = 0;
+    private int rotationNumY = 0;
+
+    private int rotationLimitX;
+    private int rotationLimitY;
+
     private Vector2 axis = new Vector2(0.0f, 0.0f);
 
     public float deadZone = 0.3f;
-    public float changeSpeed = 10.0f;
+    public float rotationCooldown = 1.0f;
+    private bool onCooldown = false;
+    public PlaceObjects placeObjects;
 
     private void OnEnable()
     {
@@ -32,43 +39,52 @@ public class RotateObject : MonoBehaviour {
 
     private void Update()
     {
-        if (!((axis.y == 0.0f) && (axis.x == 0.0f)))
+        if ((!((axis.y == 0.0f) && (axis.x == 0.0f))) && (onCooldown == false))
         {
-            UpdateAngles();
+            StartCoroutine("UpdateAngles");
         }
     }
 
-    private void UpdateAngles()
+    IEnumerator UpdateAngles()
     {
+        onCooldown = true;
+
+        rotationLimitX = rotationRules.rotationLimitX;
+        rotationLimitY = rotationRules.rotationLimitY;
+
         if ((axis.y > deadZone) || (axis.y < -deadZone))
         {
-            y = y + (axis.y * changeSpeed * Time.deltaTime);
+            rotationNumY = rotationNumY + 1;
         }
 
         if ((axis.x > deadZone) || (axis.x < -deadZone))
         {
-            x = x + (axis.x * changeSpeed * Time.deltaTime);
+            rotationNumX = rotationNumX + 1;
         }
 
-        if (y > 360)
+        if (rotationNumY > rotationLimitY)
         {
-            y = y - 360;
+            rotationNumY = rotationNumY - rotationLimitY;
         }
-        else if (y < 0)
+        else if (rotationNumY < rotationLimitY)
         {
-            y = y + 360;
-        }
-
-        if (x > 360)
-        {
-            x = x - 360;
-        }
-        else if (x < 0)
-        {
-            x = x + 360;
+            rotationNumY = rotationNumY + rotationLimitY;
         }
 
-        Quaternion placeRotation = Quaternion.Euler(x, y, 0);
-        GetComponent<PlaceObjects>().placeRotation = placeRotation;
+        if (rotationNumX > rotationLimitX)
+        {
+            rotationNumX = rotationNumX - rotationLimitX;
+        }
+        else if (rotationNumX < rotationLimitX)
+        {
+            rotationNumX = rotationNumX + rotationLimitX;
+        }
+
+        yield return new WaitForSeconds(rotationCooldown);
+
+        Quaternion placeRotation = Quaternion.Euler(rotationNumX, rotationLimitY, 0);
+        placeObjects.placeRotation = placeRotation;
+
+        onCooldown = false;
     }
 }

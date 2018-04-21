@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114449527843477630}
   - component: {fileID: 114025621702612772}
   - component: {fileID: 114937806461485834}
+  - component: {fileID: 114257447472820356}
   - component: {fileID: 114142181034846664}
   - component: {fileID: 114303723475769020}
   m_Layer: 9
@@ -151,6 +152,29 @@ MonoBehaviour:
   linkID: 4
   linkIDList: 0100000003000000
   listCanLinkTo: 1
+--- !u!114 &114257447472820356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1792840418926634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fac5e24666b8994ab05efb726b747d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleRotationsX:
+  - 0
+  - 90
+  - 180
+  - 270
+  possibleRotationsY:
+  - 0
+  - 90
+  - 180
+  - 270
+  rotationLimitX: 4
+  rotationLimitY: 4
 --- !u!114 &114303723475769020
 MonoBehaviour:
   m_ObjectHideFlags: 1

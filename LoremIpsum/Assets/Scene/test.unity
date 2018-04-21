@@ -4125,8 +4125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerEvents: {fileID: 1495150187}
+  rotationRules: {fileID: 0}
   deadZone: 0.3
-  changeSpeed: 90
+  rotationCooldown: 1
+  placeObjects: {fileID: 1495150194}
 --- !u!114 &1495150194
 MonoBehaviour:
   m_ObjectHideFlags: 0
