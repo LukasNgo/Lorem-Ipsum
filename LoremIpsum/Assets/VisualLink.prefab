@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114986211490485070}
   m_Layer: 0
   m_Name: VisualLink
-  m_TagString: Untagged
+  m_TagString: Link
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,6 +55,8 @@ MonoBehaviour:
   myLine: {fileID: 120650002529002000}
   myManager: {fileID: 114956939634720342, guid: dfcebd88472030c48ba8a14c52068b0e,
     type: 2}
+  firstObject: {fileID: 0}
+  secondObject: {fileID: 0}
 --- !u!120 &120650002529002000
 LineRenderer:
   m_ObjectHideFlags: 1
