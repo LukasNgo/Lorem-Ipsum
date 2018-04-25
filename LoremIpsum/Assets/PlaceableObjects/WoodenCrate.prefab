@@ -165,16 +165,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleRotationsX:
   - 0
+  - 45
   - 90
+  - 135
   - 180
+  - 225
   - 270
+  - 315
   possibleRotationsY:
   - 0
+  - 45
   - 90
+  - 135
   - 180
+  - 225
   - 270
-  rotationLimitX: 4
-  rotationLimitY: 4
+  - 315
+  rotationLimitX: 7
+  rotationLimitY: 7
 --- !u!114 &114303723475769020
 MonoBehaviour:
   m_ObjectHideFlags: 1

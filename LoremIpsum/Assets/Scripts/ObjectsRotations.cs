@@ -18,7 +18,10 @@ public class ObjectsRotations : MonoBehaviour {
 
     public Quaternion GetRotation(int x, int y)
     {
-        Quaternion rotation = Quaternion.Euler(x, y, 0);
+        Quaternion rotation = Quaternion.Euler(0, 0, 0);
+
+        rotation = Quaternion.Euler(possibleRotationsX[x], possibleRotationsY[y], 0);
+
         return rotation;
     }
 }

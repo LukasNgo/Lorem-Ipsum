@@ -17,7 +17,7 @@ public class RotateObject : MonoBehaviour {
 
     private Vector2 axis = new Vector2(0.0f, 0.0f);
 
-    public float deadZone = 0.3f;
+    public float deadZone = 0.6f;
     public float rotationCooldown = 1.0f;
     private bool onCooldown = false;
     public PlaceObjects placeObjects;
@@ -39,51 +39,61 @@ public class RotateObject : MonoBehaviour {
 
     private void Update()
     {
-        if ((!((axis.y == 0.0f) && (axis.x == 0.0f))) && (onCooldown == false))
+        if ((!((axis.y == 0.0f) && (axis.x == 0.0f))) && (onCooldown == false) && (rotationRules != null))
         {
-            StartCoroutine("UpdateAngles");
+            StartCoroutine(UpdateAngles());
         }
     }
 
     IEnumerator UpdateAngles()
     {
-        onCooldown = true;
-
         rotationLimitX = rotationRules.rotationLimitX;
         rotationLimitY = rotationRules.rotationLimitY;
 
-        if ((axis.y > deadZone) || (axis.y < -deadZone))
+        if (axis.y > deadZone)
         {
             rotationNumY = rotationNumY + 1;
         }
+        else if (axis.y < -deadZone)
+        {
+            rotationNumY = rotationNumY - 1;
+        }
 
-        if ((axis.x > deadZone) || (axis.x < -deadZone))
+        if (axis.x > deadZone)
         {
             rotationNumX = rotationNumX + 1;
+        }
+        else if (axis.x < -deadZone)
+        {
+            rotationNumX = rotationNumX - 1;
         }
 
         if (rotationNumY > rotationLimitY)
         {
-            rotationNumY = rotationNumY - rotationLimitY;
+            rotationNumY = 0;
         }
-        else if (rotationNumY < rotationLimitY)
+        else if (rotationNumY < 0)
         {
-            rotationNumY = rotationNumY + rotationLimitY;
+            rotationNumY = rotationLimitY;
         }
 
         if (rotationNumX > rotationLimitX)
         {
-            rotationNumX = rotationNumX - rotationLimitX;
+            rotationNumX = 0;
         }
-        else if (rotationNumX < rotationLimitX)
+        else if (rotationNumX < 0)
         {
-            rotationNumX = rotationNumX + rotationLimitX;
+            rotationNumX = rotationLimitX;
         }
+
+        Quaternion placeRotation = Quaternion.Euler(0, 0, 0);
+        placeRotation = rotationRules.GetRotation(rotationNumX, rotationLimitY);
+
+        onCooldown = true;
+
+        placeObjects.placeRotation = placeRotation;
 
         yield return new WaitForSeconds(rotationCooldown);
-
-        Quaternion placeRotation = Quaternion.Euler(rotationNumX, rotationLimitY, 0);
-        placeObjects.placeRotation = placeRotation;
 
         onCooldown = false;
     }
