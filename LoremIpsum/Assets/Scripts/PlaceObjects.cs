@@ -5,6 +5,10 @@ using VRTK;
 
 public class PlaceObjects : MonoBehaviour
 {
+    public GameObject objectsMenu;
+    public GameObject saveMenu;
+    public GameObject loadMenu;
+    public GameObject overwriteMenu;
 
     public VRTK_ControllerEvents controllerEvents;
     public VRTK_BasePointerRenderer pointerRenderer;
@@ -81,7 +85,7 @@ public class PlaceObjects : MonoBehaviour
 
     private void Update()
     {
-        if (SelectedObject != null)
+        if (SelectedObject != null && !objectsMenu.activeInHierarchy && !saveMenu.activeInHierarchy && !loadMenu.activeInHierarchy && !overwriteMenu.activeInHierarchy)
         {
             placeLocation = pointerRenderer.GetDestinationHit().point;
 

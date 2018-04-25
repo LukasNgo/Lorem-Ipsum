@@ -34,6 +34,11 @@ public class ObjectInfo : MonoBehaviour
                 objectInfoUI.SetActive(false);
             }
         }
+        else
+        {
+            selectedObject = null;
+            objectInfoUI.SetActive(false);
+        }
     }
 
     private void ShowInfo()
