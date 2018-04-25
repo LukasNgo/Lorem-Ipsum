@@ -19,6 +19,8 @@ public class GameobjectsToString : MonoBehaviour {
 		objectsToSave = GameObject.FindGameObjectsWithTag(selectableObjectTag);
         links = GameObject.FindGameObjectsWithTag(visualLinkTag);
 
+        List<GameObject> doneItems = new List<GameObject>();
+
         if (links != null)
         {
             for (int i = 0; i < links.Length; i++)
@@ -29,6 +31,7 @@ public class GameobjectsToString : MonoBehaviour {
                 returnString.Add("Position:" + _tempVector.ToString("G4"));
                 returnString.Add("Rotation:" + links[i].GetComponent<ShowLink>().firstObject.transform.rotation.ToString("G4"));
                 returnString.Add("Scale:" + links[i].GetComponent<ShowLink>().firstObject.transform.localScale.ToString("G4"));
+                doneItems.Add(links[i].GetComponent<ShowLink>().firstObject);
 
                 returnString.Add("Name:" + links[i].GetComponent<ShowLink>().secondObject.ToString());
                 returnString.Add("LinkID:" + (i + 1));
@@ -36,6 +39,7 @@ public class GameobjectsToString : MonoBehaviour {
                 returnString.Add("Position:" + _tempVector2.ToString("G4"));
                 returnString.Add("Rotation:" + links[i].GetComponent<ShowLink>().secondObject.transform.rotation.ToString("G4"));
                 returnString.Add("Scale:" + links[i].GetComponent<ShowLink>().secondObject.transform.localScale.ToString("G4"));
+                doneItems.Add(links[i].GetComponent<ShowLink>().secondObject);
             }
         }
 
@@ -45,23 +49,14 @@ public class GameobjectsToString : MonoBehaviour {
             {
                 if (saveObject.activeInHierarchy)
                 {
-                    foreach (GameObject linkObject in links)
+                    if (!doneItems.Contains(saveObject))
                     {
-                        if (linkObject.GetComponent<ShowLink>().firstObject != saveObject && 
-                            linkObject.GetComponent<ShowLink>().secondObject != saveObject)
-                        {
-
-                            Debug.Log("first object: " + linkObject.GetComponent<ShowLink>().firstObject);
-                            Debug.Log("second object: " + linkObject.GetComponent<ShowLink>().secondObject);
-                            Debug.Log("save object:" + saveObject);
-
-                            returnString.Add("Name:" + saveObject.ToString());
-                            returnString.Add("LinkID: 0");
-                            Vector3 _tempVector = saveObject.transform.position;
-                            returnString.Add("Position:" + _tempVector.ToString("G4"));
-                            returnString.Add("Rotation:" + saveObject.transform.rotation.ToString("G4"));
-                            returnString.Add("Scale:" + saveObject.transform.localScale.ToString("G4"));
-                        }
+                        returnString.Add("Name:" + saveObject.ToString());
+                        returnString.Add("LinkID: 0");
+                        Vector3 _tempVector = saveObject.transform.position;
+                        returnString.Add("Position:" + _tempVector.ToString("G4"));
+                        returnString.Add("Rotation:" + saveObject.transform.rotation.ToString("G4"));
+                        returnString.Add("Scale:" + saveObject.transform.localScale.ToString("G4"));
                     }
                 }
             }
