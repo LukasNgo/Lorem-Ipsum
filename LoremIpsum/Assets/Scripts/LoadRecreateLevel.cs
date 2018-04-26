@@ -13,17 +13,39 @@ public class LoadRecreateLevel : MonoBehaviour {
     //private LinkObjects linkObjects_script;
     private ShowLinkManager showLinkManager_script;
 
+    private bool nameExists = false;
+    private bool idExists = false;
+    private bool posExists = false;
+    private bool rotExists = false;
+    private bool sclExists = false;
+
+    private string name;
+    private int linkID;
+    private Vector3 pos;
+    private Quaternion rot;
+    private Vector3 scl;
+
     private void Start()
     {
         m_objectList_script = GameObject.Find("insertObjects").GetComponent<ObjectList>();
         objectArray = m_objectList_script.getObjectArray();
+
+        Debug.Log("Showing array of objects: ");
+        foreach (GameObject o in objectArray)
+        {
+            string toSplit = o.name;
+            string[] splitResult = toSplit.Split(new char[] { ' ', '(' });
+            o.name = splitResult[0];
+            Debug.Log(o.name);
+        }
     }
 
-    public void RecreateLevel(string[] m_fileContent)
+    public void RecreateLevel(string[] fileContent)
     {
-        this.m_fileContent = m_fileContent;
+        m_fileContent = fileContent;
         DeleteSceneObjects();
         InstantiateObjects();
+        // ** UNCOMMENT **
         //LinkObjects();
     }
 
@@ -32,8 +54,9 @@ public class LoadRecreateLevel : MonoBehaviour {
     {
         string[] tags =
         {
-            "SelectableObjects",
-            "VisualLinks"
+            "SelectableObjects"
+            // ** UNCOMMENT ** put commar
+            //"VisualLinks"
         };
 
         foreach (string tag in tags)
@@ -43,22 +66,24 @@ public class LoadRecreateLevel : MonoBehaviour {
             foreach (GameObject o in objects)
             {
                 Destroy(o.gameObject);
+                Debug.Log("Destroying object: " + o.name);
             }
         }
     }
 
     // instantiate objects from text file
     private void InstantiateObjects()
-    {
+    { 
         // check placeable objects list and place that prefab
-
+        Debug.Log("Going through array:");
         for (int i = 0; i < m_fileContent.Length; i++)
         {
-            string objectName = null;
-            string LinkID = null;
-            string position = null;
-            string rotation = null;
-            string scale = null;
+            Debug.Log("Declaring variables.");
+            string objectName = "";
+            string LinkID = "";
+            string position = "";
+            string rotation = "";
+            string scale = "";
 
             // position cords
             float x_cord = 0;
@@ -76,22 +101,44 @@ public class LoadRecreateLevel : MonoBehaviour {
             float scl_y_cord = 0;
             float scl_z_cord = 0;
 
+            Debug.Log("Starting at: " + m_fileContent[i]);
             if (m_fileContent[i].Contains("Name:"))
-            {
+            {               
                 objectName = m_fileContent[i].Substring(m_fileContent[i].IndexOf(":") + 1);
-                objectName = m_fileContent[i].Substring(0, m_fileContent[i].IndexOf(" ") - 1);
-                objectName = m_fileContent[i].Substring(0, m_fileContent[i].IndexOf("(") - 1);
-            }
+                Debug.Log(objectName);
+                objectName = objectName.Substring(0, objectName.IndexOf(" "));
+                Debug.Log(objectName);
+                objectName = objectName.Substring(0, objectName.IndexOf("("));
+                Debug.Log(objectName);
 
+                nameExists = true;
+
+                if (nameExists)
+                {
+                    name = objectName;
+                }
+                Debug.Log("Name: " + objectName);
+            }
+        
             else if (m_fileContent[i].Contains("LinkID:"))
             {               
                 LinkID = m_fileContent[i].Substring(m_fileContent[i].IndexOf(":") + 1);
+                idExists = true;
+
+
+                if (idExists)
+                {
+                    linkID = int.Parse(LinkID);
+                }
+                Debug.Log("LinkID: " + LinkID);
             }
 
             else if (m_fileContent[i].Contains("Position:"))
             {                
                 position = m_fileContent[i].Substring(m_fileContent[i].IndexOf("(") + 1);
-                position = m_fileContent[i].Substring(0, m_fileContent[i].IndexOf(")") - 1);
+                Debug.Log(position);
+                position = position.Substring(0, position.IndexOf(")"));
+                Debug.Log(position);
 
                 string[] positionArray = position.Split(',');
 
@@ -104,12 +151,20 @@ public class LoadRecreateLevel : MonoBehaviour {
                 y_cord = float.Parse(positionArray[1]);
                 z_cord = float.Parse(positionArray[2]);
 
+                posExists = true;
+
+                if (posExists)
+                {
+                    pos = new Vector3(x_cord, y_cord, z_cord);
+                }
+                Debug.Log("Position (x, y, z)" + x_cord + ", " + y_cord + ", " + z_cord);
+
             }
 
             else if (m_fileContent[i].Contains("Rotation:"))
             {               
                 rotation = m_fileContent[i].Substring(m_fileContent[i].IndexOf("(") + 1);
-                rotation = m_fileContent[i].Substring(0, m_fileContent[i].IndexOf(")") - 1);
+                rotation = rotation.Substring(0, rotation.IndexOf(")"));
 
                 string[] rotationArray = rotation.Split(',');
                 
@@ -122,12 +177,20 @@ public class LoadRecreateLevel : MonoBehaviour {
                 rot_y_cord = float.Parse(rotationArray[1]);
                 rot_z_cord = float.Parse(rotationArray[2]);
                 rot_w_cord = float.Parse(rotationArray[3]);
+
+                rotExists = true;
+
+                if (rotExists)
+                {
+                    rot = Quaternion.Euler(rot_x_cord, rot_y_cord, rot_z_cord);
+                }
+                Debug.Log("Rotation (x, y, z, w)" + rot_x_cord + ", " + rot_y_cord + ", " + rot_z_cord + "," + rot_w_cord);
             }
 
             else if (m_fileContent[i].Contains("Scale:"))
             {
                 scale = m_fileContent[i].Substring(m_fileContent[i].IndexOf("(") + 1);
-                scale = m_fileContent[i].Substring(0, m_fileContent[i].IndexOf(")") - 1);
+                scale = scale.Substring(0, scale.IndexOf(")"));
 
                 string[] scaleArray = scale.Split(',');
 
@@ -139,32 +202,49 @@ public class LoadRecreateLevel : MonoBehaviour {
                 scl_x_cord = float.Parse(scaleArray[0]);
                 scl_y_cord = float.Parse(scaleArray[1]);
                 scl_z_cord = float.Parse(scaleArray[2]);
+
+                sclExists = true;
+
+                if (sclExists)
+                {
+                    scl = new Vector3(scl_x_cord, scl_y_cord, scl_z_cord);
+                }
+                Debug.Log("Scale (x, y, z)" + scl_x_cord + ", " + scl_y_cord + ", " + scl_z_cord);
             }
 
             // check name against placeable objects list
 
-            int linkID = int.Parse(LinkID);
-            Vector3 pos = new Vector3(x_cord, y_cord, z_cord);
-            Quaternion rot = Quaternion.Euler(rot_x_cord, rot_y_cord, rot_z_cord);
-            Vector3 scl = new Vector3(scl_x_cord, scl_y_cord, scl_z_cord);
+            Debug.Log(name + ", " + linkID + ", " + pos + ", " + rot + ", " + scl);
 
-            for (int j = 0; j < objectArray.Length; j++)
+            if (nameExists && idExists && posExists && rotExists && sclExists)
             {
-                if (objectArray[j].name == objectName)
+                Debug.Log("Starting object instantiation task.");
+                for (int j = 0; j < objectArray.Length; j++)
                 {
-                    // INSTANTIATE HERE
-                    GameObject temp = Instantiate(objectArray[j].gameObject, pos, rot);
-                    temp.transform.localScale = scl;
-
-                    if (linkID >= 0)
+                    Debug.Log("Searching for: " + name);
+                    if (objectArray[j].name == name)
                     {
-                        listOfLinkables.Add(new KeyValuePair<int, GameObject>(linkID, temp));
+                        Debug.Log("objectInArray selected: " + objectArray[j].name);
+                        // INSTANTIATE HERE
+                        GameObject temp = Instantiate(objectArray[j].gameObject, pos, rot);
+                        temp.transform.localScale = scl;
+                        temp.SetActive(true);
+
+                        if (linkID >= 0)
+                        {
+                            listOfLinkables.Add(new KeyValuePair<int, GameObject>(linkID, temp));
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("No object in placeable object array");
                     }
                 }
-                else
-                {
-                    Debug.Log("No object in placeable object array");
-                }
+                nameExists = false;
+                idExists = false;
+                posExists = false;
+                rotExists = false;
+                sclExists = false;
             }
  
         }
@@ -190,6 +270,7 @@ public class LoadRecreateLevel : MonoBehaviour {
                     GameObject first = listOfLinkables[i].Value;
                     GameObject second = listOfLinkables[j].Value;
 
+                    // ** UNCOMMENT **
                     //linkObjects_script.GetComponent<LinkObjects>().setLinkedObjects(first, second);
                     showLinkManager_script.AddLink(first, second);
                 }
@@ -199,3 +280,4 @@ public class LoadRecreateLevel : MonoBehaviour {
 
     }
 }
+
