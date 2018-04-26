@@ -9,6 +9,9 @@ public class LoadRecreateLevel : MonoBehaviour {
 
     private ObjectList m_objectList_script;
     private GameObject[] objectArray = null;
+    private List<KeyValuePair<int, GameObject>> listOfLinkables = new List<KeyValuePair<int, GameObject>>();
+    //private LinkObjects linkObjects_script;
+    private ShowLinkManager showLinkManager_script;
 
     private void Start()
     {
@@ -21,7 +24,7 @@ public class LoadRecreateLevel : MonoBehaviour {
         this.m_fileContent = m_fileContent;
         DeleteSceneObjects();
         InstantiateObjects();
-        LinkObjects();
+        //LinkObjects();
     }
 
     // delete objects already in scene; ready for loading
@@ -152,6 +155,11 @@ public class LoadRecreateLevel : MonoBehaviour {
                     // INSTANTIATE HERE
                     GameObject temp = Instantiate(objectArray[j].gameObject, pos, rot);
                     temp.transform.localScale = scl;
+
+                    if (linkID >= 0)
+                    {
+                        listOfLinkables.Add(new KeyValuePair<int, GameObject>(linkID, temp));
+                    }
                 }
                 else
                 {
@@ -166,8 +174,28 @@ public class LoadRecreateLevel : MonoBehaviour {
     private void LinkObjects()
     {
         // check IDs
+        // for every item in list
+        for (int i = 0; i < listOfLinkables.Count; i++)
+        {
+            // get values of individual
+            int linkID = listOfLinkables[i].Key;
+            GameObject firstObjectToLink = listOfLinkables[i].Value;
 
-        // send link information to create link 
+            for (int j = i + 1; j < listOfLinkables.Count; j++)
+            {
+                if (linkID == listOfLinkables[j].Key)
+                {
+                    // send link information to create link 
+                    // send value of for i and j
+                    GameObject first = listOfLinkables[i].Value;
+                    GameObject second = listOfLinkables[j].Value;
+
+                    //linkObjects_script.GetComponent<LinkObjects>().setLinkedObjects(first, second);
+                    showLinkManager_script.AddLink(first, second);
+                }
+            }
+        }
+        
 
     }
 }
