@@ -34,8 +34,11 @@ public class ShowLink : MonoBehaviour {
             gameObject.SetActive(true);
         }
 
-        myLine.SetPosition(0, firstObject.transform.position);
-        myLine.SetPosition(1, secondObject.transform.position);
+        if (firstObject != null && secondObject != null)
+        {
+            myLine.SetPosition(0, firstObject.transform.position);
+            myLine.SetPosition(1, secondObject.transform.position);
+        }
     }
 
     public void UnlinkObjects()

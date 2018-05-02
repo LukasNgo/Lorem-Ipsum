@@ -34,6 +34,7 @@ public class LoadFile : MonoBehaviour
         }
 
         loadRecreateLevel_script = GameObject.Find("RecreateLevel").GetComponent<LoadRecreateLevel>();
+        Debug.Log("Calling recreateLevel script: " + m_fileContent);
         loadRecreateLevel_script.RecreateLevel(m_fileContent);
 
     }

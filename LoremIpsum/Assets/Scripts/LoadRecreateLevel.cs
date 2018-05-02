@@ -10,7 +10,7 @@ public class LoadRecreateLevel : MonoBehaviour {
     private ObjectList m_objectList_script;
     private GameObject[] objectArray = null;
     private List<KeyValuePair<int, GameObject>> listOfLinkables = new List<KeyValuePair<int, GameObject>>();
-    //private LinkObjects linkObjects_script;
+    private LinkObjects linkObjects_script;
     private ShowLinkManager showLinkManager_script;
 
     private bool nameExists = false;
@@ -45,8 +45,7 @@ public class LoadRecreateLevel : MonoBehaviour {
         m_fileContent = fileContent;
         DeleteSceneObjects();
         InstantiateObjects();
-        // ** UNCOMMENT **
-        //LinkObjects();
+        LinkObjects();
     }
 
     // delete objects already in scene; ready for loading
@@ -54,9 +53,8 @@ public class LoadRecreateLevel : MonoBehaviour {
     {
         string[] tags =
         {
-            "SelectableObjects"
-            // ** UNCOMMENT ** put commar
-            //"VisualLinks"
+            "SelectableObjects",
+            "Link"
         };
 
         foreach (string tag in tags)
@@ -269,10 +267,14 @@ public class LoadRecreateLevel : MonoBehaviour {
                     // send value of for i and j
                     GameObject first = listOfLinkables[i].Value;
                     GameObject second = listOfLinkables[j].Value;
-
-                    // ** UNCOMMENT **
-                    //linkObjects_script.GetComponent<LinkObjects>().setLinkedObjects(first, second);
-                    showLinkManager_script.AddLink(first, second);
+                    Debug.Log("first: " + listOfLinkables[i].Value + " : " + first);
+                    Debug.Log("second: " + listOfLinkables[j].Value + " : " + second);
+                    
+                    
+                    GameObject.Find("P_RightController").GetComponent<LinkObjects>().setLinkedObjects(first, second);
+                    Debug.Log("Complete link");
+                    GameObject.Find("VisualLinkManager").GetComponent<ShowLinkManager>().AddLink(first, second);
+                    Debug.Log("Added link");
                 }
             }
         }

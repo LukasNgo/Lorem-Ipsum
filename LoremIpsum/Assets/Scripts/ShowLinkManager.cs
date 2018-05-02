@@ -20,6 +20,7 @@ public class ShowLinkManager : MonoBehaviour {
     public void RemoveMe(GameObject _me)
     {
         m_listOfLinks.Remove(_me);
+        Destroy(_me);
     }
 
     public void ResetIfLinked(GameObject _me)
