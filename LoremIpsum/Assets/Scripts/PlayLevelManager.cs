@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 public class PlayLevelManager : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class PlayLevelManager : MonoBehaviour {
     public GameObject failedPlay;
     public GameObject winGame;
 
-    public GameObject player;
+    public VRTK_BasicTeleport teleporter;
 
     public void PlayLevel()
     {
@@ -31,10 +32,12 @@ public class PlayLevelManager : MonoBehaviour {
         {
             menu.ChangeMenuToPlaying(true);
 
+            m_start.ObjectOn();
+            m_finish.ObjectOn();
             m_start.myManager = this;
             m_finish.myManager = this;
 
-            player.transform.position = new Vector3(m_start.transform.position.x, 0, m_start.transform.position.z);
+            teleporter.ForceTeleport(m_start.transform.position);
         }
     }
 
@@ -52,6 +55,8 @@ public class PlayLevelManager : MonoBehaviour {
     {
         menu.ChangeMenuToPlaying(false);
 
+        m_start.ObjectOff();
+        m_finish.ObjectOff();
         m_start = null;
         m_finish = null;
     }

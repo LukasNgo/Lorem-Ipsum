@@ -46,9 +46,12 @@ public class FinishArea : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (on == true)
+        if (other.gameObject.tag == "Player")
         {
-            myManager.WinLevel();
+            if (on == true)
+            {
+                myManager.WinLevel();
+            }
         }
     }
 }
