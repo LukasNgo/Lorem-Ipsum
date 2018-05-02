@@ -10,12 +10,15 @@ public class MenuToggle : MonoBehaviour {
     public VRTK_ControllerEvents L_controllerEvents;
     public GameObject menu;
 
+    public GameObject inPlayMenu;
+
     public GameObject modeText;
     public GameObject modePanel;
 
     public bool PlayerMode = false;
     public bool BuildMode = false;
-    //public bool LinkMode = false;
+
+    public bool playing = false;
 
     public string[] modeTitles;
 
@@ -24,6 +27,7 @@ public class MenuToggle : MonoBehaviour {
     public Color[] linkColors;
 
     private bool menuState = false;
+    private bool playingMenuState = false;
 
     private void Start()
     {
@@ -44,15 +48,41 @@ public class MenuToggle : MonoBehaviour {
 
     private void R_controllerEvents_ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
     {
-        ChangeState();
+        if (playing == false)
+        {
+            ChangeState();
+        }
+        else
+        {
+            PlayingMenu();
+        }
     }
 
     private void L_controllerEvents_ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
     {
-        if (BuildMode != true)
+        if (playing == false)
         {
-            ChangeState();
+            if (BuildMode != true)
+            {
+                ChangeState();
+            }
         }
+        else
+        {
+            PlayingMenu();
+        }
+    }
+
+    public void ChangeMenuToPlaying(bool isPlaying)
+    {
+        playing = isPlaying;
+        modeText.SetActive(!playing);
+    }
+
+    public void PlayingMenu()
+    {
+        playingMenuState = !playingMenuState;
+        inPlayMenu.SetActive(playingMenuState);
     }
 
     public void ChangeState()

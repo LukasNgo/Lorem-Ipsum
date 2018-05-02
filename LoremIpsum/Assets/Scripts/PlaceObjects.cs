@@ -89,7 +89,7 @@ public class PlaceObjects : MonoBehaviour
         {
             placeLocation = pointerRenderer.GetDestinationHit().point;
 
-            if ((pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true) && (menu == false))
+            if ((pointerRenderer.IsVisible() == true) && (pointerRenderer.IsValidCollision() == true) && (menu == false) && (ShowVerison != null))
             {
                 ShowVerison.SetActive(true);
                 ShowVerison.transform.position = placeLocation;
@@ -109,7 +109,7 @@ public class PlaceObjects : MonoBehaviour
                     ShowVerison.GetComponent<Renderer>().material.color = pointerRenderer.invalidCollisionColor;
                 }
             }
-            else
+            else if (ShowVerison != null)
             {
                 ShowVerison.SetActive(false);
             }
