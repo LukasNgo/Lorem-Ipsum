@@ -35,8 +35,10 @@ public class LinkObjects : MonoBehaviour {
         for (int i = 0; i < m_linkableObjects.Length; i++)
         {
             // get components of object
-            m_componentsInObjects = m_linkableObjects[i].GetComponentsInChildren<Component>();
-
+            if (m_linkableObjects[i] != null)
+            {
+                m_componentsInObjects = m_linkableObjects[i].GetComponentsInChildren<Component>();
+            }
             foreach (Component comp in m_componentsInObjects)
             {
                 comp.BroadcastMessage("GetIsEmitter");              

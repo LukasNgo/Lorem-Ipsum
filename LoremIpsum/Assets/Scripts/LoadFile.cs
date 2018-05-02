@@ -14,6 +14,8 @@ public class LoadFile : MonoBehaviour
     private string[] m_fileContent;
     private List<GameObject> buttons = new List<GameObject>();
 
+    private LoadRecreateLevel loadRecreateLevel_script;
+
     private void OnEnable()
     {
         PopulateList();
@@ -31,11 +33,9 @@ public class LoadFile : MonoBehaviour
             m_fileContent = File.ReadAllLines(currentPath);
         }
 
-        //Send String to load level
-        for (int i = 0; i < m_fileContent.Length; i++)//Loading Debug
-        {
-            Debug.Log(m_fileContent[i]);
-        }
+        loadRecreateLevel_script = GameObject.Find("RecreateLevel").GetComponent<LoadRecreateLevel>();
+        Debug.Log("Calling recreateLevel script: " + m_fileContent);
+        loadRecreateLevel_script.RecreateLevel(m_fileContent);
 
     }
 
