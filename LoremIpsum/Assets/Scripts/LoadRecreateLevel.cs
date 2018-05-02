@@ -228,7 +228,7 @@ public class LoadRecreateLevel : MonoBehaviour {
                         temp.transform.localScale = scl;
                         temp.SetActive(true);
 
-                        if (linkID >= 0)
+                        if (linkID > 0)
                         {
                             listOfLinkables.Add(new KeyValuePair<int, GameObject>(linkID, temp));
                         }
