@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myManager: {fileID: 0}
   on: 0
+  ignoreRaycastLayer: Ignore Raycast
+  defaultLayer: Default
 --- !u!114 &114659536119281472
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,7 +9,12 @@ public class FinishArea : MonoBehaviour {
     public PlayLevelManager myManager;
     public bool on = false;
 
-    private Renderer rend;
+    [SerializeField]
+    private string ignoreRaycastLayer = "Ignore Raycast";
+    [SerializeField]
+    private string defaultLayer = "Default";
+
+    private Renderer m_rend;
 
     void OnEnable()
     {
@@ -27,21 +32,23 @@ public class FinishArea : MonoBehaviour {
 
     private void Start()
     {
-        rend = gameObject.GetComponent<Renderer>();
+        m_rend = gameObject.GetComponent<Renderer>();
     }
 
     public void ObjectOn()
     {
         on = true;
-        rend.enabled = false;
+        m_rend.enabled = false;
         gameObject.GetComponent<Collider>().isTrigger = true;
+        gameObject.layer = LayerMask.NameToLayer(ignoreRaycastLayer);
     }
 
     public void ObjectOff()
     {
         on = false;
-        rend.enabled = true;
+        m_rend.enabled = true;
         gameObject.GetComponent<Collider>().isTrigger = false;
+        gameObject.layer = LayerMask.NameToLayer(defaultLayer);
     }
 
     private void OnTriggerEnter(Collider other)
