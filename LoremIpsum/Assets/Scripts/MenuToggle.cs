@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
+using UnityEngine.UI;
 
 public class MenuToggle : MonoBehaviour {
 
@@ -9,12 +10,25 @@ public class MenuToggle : MonoBehaviour {
     public VRTK_ControllerEvents L_controllerEvents;
     public GameObject menu;
 
+    public GameObject modeText;
+    public GameObject modePanel;
+
     public bool PlayerMode = false;
     public bool BuildMode = false;
     //public bool LinkMode = false;
 
+    public string[] modeTitles;
+
+    public Color[] playerColors;
+    public Color[] buildColors;
+    public Color[] linkColors;
+
     private bool menuState = false;
-    
+
+    private void Start()
+    {
+        ChangeMenuColors();
+    }
 
     private void OnEnable()
     {
@@ -46,18 +60,45 @@ public class MenuToggle : MonoBehaviour {
         menuState = !menuState;
         menu.SetActive(menuState);
 
-        if (PlayerMode == true)
-        {
-            GetComponent<VRTK_Pointer>().enableTeleport = !menuState;
-        }
-        else if (BuildMode == true)
+        if (BuildMode == true)
         {
             R_controllerEvents.gameObject.GetComponent<PlaceObjects>().MenuUp(menuState);
         }
+
+    }
+
+    public void ChangeMenuColors()
+    {
+        Color[] newColors;
+
+        if (PlayerMode == true)
+        {
+            newColors = playerColors;
+            modeText.GetComponent<Text>().text = modeTitles[0];
+        }
+        else if (BuildMode == true)
+        {
+            newColors = buildColors;
+            modeText.GetComponent<Text>().text = modeTitles[1];
+        }
         else
         {
-            //Link Mode stuff
+            newColors = linkColors;
+            modeText.GetComponent<Text>().text = modeTitles[2];
         }
+
+        for (int i = 0; i < menu.GetComponentsInChildren<Button>().Length; i++)
+        {
+            ColorBlock newColor = menu.GetComponentsInChildren<Button>()[i].colors;
+            newColor.normalColor = newColors[0];
+            newColor.highlightedColor = newColors[1];
+            newColor.pressedColor = newColors[2];
+
+            menu.GetComponentsInChildren<Button>()[i].colors = newColor;
+        }
+
+        modeText.GetComponent<Text>().color = newColors[2];
+        modePanel.GetComponent<Image>().color = newColors[0];
 
     }
 

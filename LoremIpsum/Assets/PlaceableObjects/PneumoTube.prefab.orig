@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4779524003337100}
   - component: {fileID: 33450283570930102}
   - component: {fileID: 23120059926001990}
+  - component: {fileID: 114978935355671768}
   - component: {fileID: 65123315632943662}
   - component: {fileID: 65855670170501988}
   - component: {fileID: 65345751810999062}
@@ -30,13 +31,10 @@ GameObject:
   - component: {fileID: 65929660847151006}
   - component: {fileID: 136887795858969270}
   - component: {fileID: 65911789649119292}
-  m_Layer: 0
+  - component: {fileID: 114795118944752458}
+  m_Layer: 9
   m_Name: PneumoTube
-<<<<<<< HEAD
-  m_TagString: Object
-=======
   m_TagString: SelectableObjects
->>>>>>> objects-menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +57,7 @@ GameObject:
   - component: {fileID: 114126203976460160}
   - component: {fileID: 59885661180149118}
   - component: {fileID: 65608091589514264}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PneumoDoor
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -391,6 +389,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b00146b1a68ba4489f26887b4d45f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+--- !u!114 &114795118944752458
+=======
+--- !u!114 &114978935355671768
+>>>>>>> origin/DetectObjectLink
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1343453957377174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+<<<<<<< HEAD
+  m_Script: {fileID: 11500000, guid: 438f32ad1b723db449a2c04ea8b55f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Pneumo Tube
+  ObjectInfo: Some text here
+=======
+  m_Script: {fileID: 11500000, guid: f62acc9b2c68e3d449807647b307c77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkID: 2
+  linkIDList: 
+  listCanLinkTo: 0
+>>>>>>> origin/DetectObjectLink
 --- !u!136 &136887795858969270
 CapsuleCollider:
   m_ObjectHideFlags: 1

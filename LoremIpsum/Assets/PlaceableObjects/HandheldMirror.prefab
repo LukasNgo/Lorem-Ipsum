@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33393895034853284}
   - component: {fileID: 65679101523066976}
   - component: {fileID: 23602647322177920}
+  - component: {fileID: 114978043413919336}
   - component: {fileID: 114408414127888040}
   - component: {fileID: 114742274912795928}
   - component: {fileID: 114397192626714618}
@@ -46,6 +47,8 @@ GameObject:
   - component: {fileID: 114959199694877852}
   - component: {fileID: 114780336117264388}
   - component: {fileID: 114280341228938122}
+  - component: {fileID: 114290052964989732}
+  - component: {fileID: 114550536005354280}
   m_Layer: 9
   m_Name: HandheldMirror
   m_TagString: SelectableObjects
@@ -276,9 +279,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65679101523066976
@@ -321,6 +324,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2368661e9851edc4989529a4003c4268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114290052964989732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646095386235962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438f32ad1b723db449a2c04ea8b55f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Handheld Mirror
+  ObjectInfo: Some text here
 --- !u!114 &114397192626714618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -362,6 +378,20 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114550536005354280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646095386235962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62acc9b2c68e3d449807647b307c77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkID: 0
+  linkIDList: 
+  listCanLinkTo: 0
 --- !u!114 &114742274912795928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,3 +451,17 @@ MonoBehaviour:
   strengthOnUse: 0
   durationOnUse: 0
   intervalOnUse: 0.05
+--- !u!114 &114978043413919336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646095386235962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62acc9b2c68e3d449807647b307c77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkID: 0
+  linkIDList: 
+  listCanLinkTo: 1
