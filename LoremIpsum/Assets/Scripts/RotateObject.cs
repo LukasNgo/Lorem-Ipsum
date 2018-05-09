@@ -7,13 +7,20 @@ using VRTK;
 public class RotateObject : MonoBehaviour {
 
     public VRTK_ControllerEvents controllerEvents;
+    public ObjectsRotations rotationRules;
 
-    private float y = 0.0f;
-    private float x = 0.0f;
+    private int rotationNumX = 0;
+    private int rotationNumY = 0;
+
+    private int rotationLimitX;
+    private int rotationLimitY;
+
     private Vector2 axis = new Vector2(0.0f, 0.0f);
 
-    public float deadZone = 0.3f;
-    public float changeSpeed = 10.0f;
+    public float deadZone = 0.6f;
+    public float rotationCooldown = 1.0f;
+    private bool onCooldown = false;
+    public PlaceObjects placeObjects;
 
     private void OnEnable()
     {
@@ -32,43 +39,62 @@ public class RotateObject : MonoBehaviour {
 
     private void Update()
     {
-        if (!((axis.y == 0.0f) && (axis.x == 0.0f)))
+        if ((!((axis.y == 0.0f) && (axis.x == 0.0f))) && (onCooldown == false) && (rotationRules != null))
         {
-            UpdateAngles();
+            StartCoroutine(UpdateAngles());
         }
     }
 
-    private void UpdateAngles()
+    IEnumerator UpdateAngles()
     {
-        if ((axis.y > deadZone) || (axis.y < -deadZone))
+        rotationLimitX = rotationRules.rotationLimitX;
+        rotationLimitY = rotationRules.rotationLimitY;
+
+        if (axis.y > deadZone)
         {
-            y = y + (axis.y * changeSpeed * Time.deltaTime);
+            rotationNumY = rotationNumY + 1;
+        }
+        else if (axis.y < -deadZone)
+        {
+            rotationNumY = rotationNumY - 1;
         }
 
-        if ((axis.x > deadZone) || (axis.x < -deadZone))
+        if (axis.x > deadZone)
         {
-            x = x + (axis.x * changeSpeed * Time.deltaTime);
+            rotationNumX = rotationNumX + 1;
+        }
+        else if (axis.x < -deadZone)
+        {
+            rotationNumX = rotationNumX - 1;
         }
 
-        if (y > 360)
+        if (rotationNumY > rotationLimitY)
         {
-            y = y - 360;
+            rotationNumY = 0;
         }
-        else if (y < 0)
+        else if (rotationNumY < 0)
         {
-            y = y + 360;
-        }
-
-        if (x > 360)
-        {
-            x = x - 360;
-        }
-        else if (x < 0)
-        {
-            x = x + 360;
+            rotationNumY = rotationLimitY;
         }
 
-        Quaternion placeRotation = Quaternion.Euler(x, y, 0);
-        GetComponent<PlaceObjects>().placeRotation = placeRotation;
+        if (rotationNumX > rotationLimitX)
+        {
+            rotationNumX = 0;
+        }
+        else if (rotationNumX < 0)
+        {
+            rotationNumX = rotationLimitX;
+        }
+
+        Quaternion placeRotation = Quaternion.Euler(0, 0, 0);
+        placeRotation = rotationRules.GetRotation(rotationNumX, rotationLimitY);
+
+        onCooldown = true;
+
+        placeObjects.placeRotation = placeRotation;
+
+        yield return new WaitForSeconds(rotationCooldown);
+
+        onCooldown = false;
     }
 }
