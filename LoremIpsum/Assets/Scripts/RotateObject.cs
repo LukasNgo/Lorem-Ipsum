@@ -46,6 +46,12 @@ public class RotateObject : MonoBehaviour {
         }
     }
 
+    public void ResetStuff()
+    {
+        rotationNumX = 0;
+        rotationNumY = 0;
+    }
+
     IEnumerator UpdateAngles()
     {
         rotationLimitX = rotationRules.rotationLimitX;

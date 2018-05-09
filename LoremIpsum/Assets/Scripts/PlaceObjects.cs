@@ -129,6 +129,7 @@ public class PlaceObjects : MonoBehaviour
         SelectedObject = newObject;
 
         GetComponent<RotateObject>().rotationRules = SelectedObject.GetComponent<ObjectsRotations>();
+        GetComponent<RotateObject>().ResetStuff();
 
         if (SelectedObject != null)
         {
