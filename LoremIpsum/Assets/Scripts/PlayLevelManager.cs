@@ -37,7 +37,8 @@ public class PlayLevelManager : MonoBehaviour {
             m_start.myManager = this;
             m_finish.myManager = this;
 
-            teleporter.ForceTeleport(m_start.transform.position);
+            Vector3 tp = new Vector3(m_start.transform.position.x, 0, m_start.transform.position.z);
+            teleporter.ForceTeleport(tp);
         }
     }
 
@@ -53,11 +54,20 @@ public class PlayLevelManager : MonoBehaviour {
 
     public void QuitLevel()
     {
+        teleporter.enabled = false;
+        StartCoroutine(pauseTeleport());
+
         menu.ChangeMenuToPlaying(false);
 
         m_start.ObjectOff();
         m_finish.ObjectOff();
         m_start = null;
         m_finish = null;
+    }
+
+    private IEnumerator pauseTeleport()
+    {
+        yield return new WaitForSeconds(2);
+        teleporter.enabled = true;
     }
 }

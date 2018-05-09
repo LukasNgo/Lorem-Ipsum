@@ -41,6 +41,7 @@ public class RotateObject : MonoBehaviour {
     {
         if ((!((axis.y == 0.0f) && (axis.x == 0.0f))) && (onCooldown == false) && (rotationRules != null))
         {
+            onCooldown = true;
             StartCoroutine(UpdateAngles());
         }
     }
@@ -68,28 +69,26 @@ public class RotateObject : MonoBehaviour {
             rotationNumX = rotationNumX - 1;
         }
 
-        if (rotationNumY > rotationLimitY)
+        if (rotationNumY >= rotationLimitY)
         {
             rotationNumY = 0;
         }
         else if (rotationNumY < 0)
         {
-            rotationNumY = rotationLimitY;
+            rotationNumY = rotationLimitY - 1;
         }
 
-        if (rotationNumX > rotationLimitX)
+        if (rotationNumX >= rotationLimitX)
         {
             rotationNumX = 0;
         }
         else if (rotationNumX < 0)
         {
-            rotationNumX = rotationLimitX;
+            rotationNumX = rotationLimitX - 1;
         }
 
         Quaternion placeRotation = Quaternion.Euler(0, 0, 0);
-        placeRotation = rotationRules.GetRotation(rotationNumX, rotationLimitY);
-
-        onCooldown = true;
+        placeRotation = rotationRules.GetRotation(rotationNumX, rotationNumY);
 
         placeObjects.placeRotation = placeRotation;
 

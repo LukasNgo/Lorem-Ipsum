@@ -322,8 +322,8 @@ MonoBehaviour:
   - 225
   - 270
   - 315
-  rotationLimitX: 7
-  rotationLimitY: 7
+  rotationLimitX: 8
+  rotationLimitY: 8
 --- !u!114 &114669131801529176
 MonoBehaviour:
   m_ObjectHideFlags: 1

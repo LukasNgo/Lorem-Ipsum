@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4290322903738960}
   - component: {fileID: 33394212321645494}
-  - component: {fileID: 135013004841626032}
   - component: {fileID: 23235626451952728}
   - component: {fileID: 114659536119281472}
   - component: {fileID: 114985283402532540}
   - component: {fileID: 114170152261267264}
+  - component: {fileID: 136409288127014258}
   m_Layer: 0
   m_Name: Finish
   m_TagString: SelectableObjects
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1999748461308050}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114170152261267264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,8 +128,8 @@ MonoBehaviour:
   linkID: 5
   linkIDList: 
   listCanLinkTo: 0
---- !u!135 &135013004841626032
-SphereCollider:
+--- !u!136 &136409288127014258
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -137,6 +137,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
