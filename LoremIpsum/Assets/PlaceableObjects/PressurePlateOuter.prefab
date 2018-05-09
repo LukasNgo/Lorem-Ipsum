@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 54750695083236968}
   - component: {fileID: 145787828754263388}
   - component: {fileID: 114218118632990662}
+  - component: {fileID: 114405663330943480}
   - component: {fileID: 114996279680667788}
   m_Layer: 9
   m_Name: PressurePlateOuter
@@ -292,6 +293,37 @@ MonoBehaviour:
   selfRenderer: {fileID: 23747119098196184}
   lightRenderer: {fileID: 0}
   myLight: {fileID: 0}
+--- !u!114 &114405663330943480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626955338159770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fac5e24666b8994ab05efb726b747d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleRotationsX:
+  - 0
+  - 45
+  - 90
+  - 135
+  - 180
+  - 225
+  - 270
+  - 315
+  possibleRotationsY:
+  - 0
+  - 45
+  - 90
+  - 135
+  - 180
+  - 225
+  - 270
+  - 315
+  rotationLimitX: 7
+  rotationLimitY: 7
 --- !u!114 &114669131801529176
 MonoBehaviour:
   m_ObjectHideFlags: 1
