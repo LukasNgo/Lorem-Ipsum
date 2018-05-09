@@ -228,8 +228,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639da67cda90cd94eb932bfe4eecc644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerEvents: {fileID: 114247146247306008}
+  R_controllerEvents: {fileID: 0}
+  L_controllerEvents: {fileID: 0}
   menu: {fileID: 0}
+  inPlayMenu: {fileID: 0}
+  modeText: {fileID: 0}
+  modePanel: {fileID: 0}
+  PlayerMode: 0
+  BuildMode: 0
+  playing: 0
+  modeTitles: []
+  playerColors: []
+  buildColors: []
+  linkColors: []
 --- !u!114 &114247146247306008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,8 +417,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639da67cda90cd94eb932bfe4eecc644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerEvents: {fileID: 114213478578568666}
+  R_controllerEvents: {fileID: 0}
+  L_controllerEvents: {fileID: 0}
   menu: {fileID: 0}
+  inPlayMenu: {fileID: 0}
+  modeText: {fileID: 0}
+  modePanel: {fileID: 0}
+  PlayerMode: 0
+  BuildMode: 0
+  playing: 0
+  modeTitles: []
+  playerColors: []
+  buildColors: []
+  linkColors: []
 --- !u!114 &114699854706471928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -478,9 +500,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5265ce82117f5a49a4b3744160e6f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectsMenu: {fileID: 0}
+  saveMenu: {fileID: 0}
+  loadMenu: {fileID: 0}
+  overwriteMenu: {fileID: 0}
   controllerEvents: {fileID: 114213478578568666}
   pointerRenderer: {fileID: 114627238578091608}
+  objectTag: SelectableObjects
   SelectedObject: {fileID: 0}
+  placeRotation: {x: 0, y: 0, z: 0, w: 0}
+  canPlace: 1
 --- !u!114 &114877656831459642
 MonoBehaviour:
   m_ObjectHideFlags: 1
