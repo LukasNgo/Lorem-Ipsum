@@ -76,7 +76,7 @@ public class MenuToggle : MonoBehaviour {
     public void ChangeMenuToPlaying(bool isPlaying)
     {
         playing = isPlaying;
-        modeText.SetActive(!playing);
+        //modeText.SetActive(!playing);
     }
 
     public void PlayingMenu()

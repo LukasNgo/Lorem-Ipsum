@@ -202,9 +202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6486e0c4cad462498196d4b0c1d5943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 0}
-  failedPlay: {fileID: 0}
-  winGame: {fileID: 0}
+  menu: {fileID: 114570347546089692, guid: a9f85fcc0df0b2942817a1f512622341, type: 2}
+  failedPlay: {fileID: 1744053580090480, guid: 25b3f634103ccd2429562e9d126deb1b, type: 2}
+  winGame: {fileID: 1111758686398172, guid: 25b3f634103ccd2429562e9d126deb1b, type: 2}
   teleporter: {fileID: 0}
 --- !u!114 &114053811058066562
 MonoBehaviour:
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c1dd92a3b2d34d88fad00b9665019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showLinkPrefab: {fileID: 1106610661647750, guid: 6ac240ad82d1562469df6fc085169605,
+  showLinkPrefab: {fileID: 1106610661647750, guid: b37a35e1a24dee8429ca8c8674bfe388,
     type: 2}
   m_listOfLinks: []
 --- !u!114 &114485820787815106
