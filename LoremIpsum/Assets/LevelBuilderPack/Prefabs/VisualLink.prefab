@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLine: {fileID: 120650002529002000}
-  myManager: {fileID: 114956939634720342, guid: dfcebd88472030c48ba8a14c52068b0e,
+  myManager: {fileID: 114391407422021944, guid: d15e953f83aac844097442aa0483609a,
     type: 2}
   firstObject: {fileID: 0}
   secondObject: {fileID: 0}
