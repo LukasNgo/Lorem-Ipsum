@@ -340,6 +340,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 237351985}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &240293191 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1003831226417128, guid: a9f85fcc0df0b2942817a1f512622341,
+    type: 2}
+  m_PrefabInternal: {fileID: 1190687838}
 --- !u!1 &262866818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1178,16 @@ Prefab:
       propertyPath: actualHeadset
       value: 
       objectReference: {fileID: 1190687839}
+    - target: {fileID: 114890575582694826, guid: a9f85fcc0df0b2942817a1f512622341,
+        type: 2}
+      propertyPath: actualBoundaries
+      value: 
+      objectReference: {fileID: 240293191}
+    - target: {fileID: 114773586918792410, guid: a9f85fcc0df0b2942817a1f512622341,
+        type: 2}
+      propertyPath: showLinkManager
+      value: 
+      objectReference: {fileID: 1376340425}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9f85fcc0df0b2942817a1f512622341, type: 2}
   m_IsPrefabParent: 0
@@ -1407,6 +1422,12 @@ Transform:
   m_Father: {fileID: 1555731002}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1376340425 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114391407422021944, guid: d15e953f83aac844097442aa0483609a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1713164269}
+  m_Script: {fileID: 11500000, guid: fc2c1dd92a3b2d34d88fad00b9665019, type: 3}
 --- !u!1 &1470146950 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1595190510868172, guid: 25b3f634103ccd2429562e9d126deb1b,
@@ -1885,7 +1906,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4870599170090400, guid: d15e953f83aac844097442aa0483609a, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114015591279687072, guid: d15e953f83aac844097442aa0483609a,
         type: 2}
